@@ -45,6 +45,8 @@
 				<string>%pathname%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
+				<key>munkiimport_appname</key>
+				<string>REAPER.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
