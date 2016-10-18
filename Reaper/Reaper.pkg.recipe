@@ -5,20 +5,20 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.0.3 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of ReaMote and creates a package.</string>
+	<string>Downloads the latest version of Reaper and creates a package.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.pkg.ReaMote</string>
+	<string>uk.ac.bham.beast.autopkg.pkg.Reaper</string>
 	<key>Input</key>
 	<dict>
 		<key>BUNDLE_ID</key>
-		<string>com.cockos.ReaMote</string>
+		<string>com.cockos.Reaper</string>
 		<key>NAME</key>
-		<string>ReaMote</string>
+		<string>Reaper</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.download.ReaMote</string>
+	<string>uk.ac.bham.beast.autopkg.download.Reaper</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -39,9 +39,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>destination_path</key>
-				<string>%pkgroot%/Applications/ReaMote.app</string>
+				<string>%pkgroot%/Applications/Reaper.app</string>
 				<key>source_path</key>
-				<string>%pathname%/ReaMote.app</string>
+				<string>%pathname%/Reaper.app</string>
 			</dict>
 			<key>Processor</key>
 			<string>Copier</string>

@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.reaper.fm/files/5.x/reaper526_i386.dmg</string>
+		<string>http://www.reaper.fm/download.php</string>
 		<key>NAME</key>
 		<string>Reaper</string>
 	</dict>
@@ -19,13 +19,26 @@
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
+    <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+        <key>re_pattern</key>
+        <string>files/5.x/reaper(\d+)_i386.dmg</string>
+        <key>result_output_var_name</key>
+        <string>version</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+    </dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<string>http://www.reaper.fm/files/5.x/reaper%version%_i386.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
