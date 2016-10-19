@@ -96,7 +96,7 @@
 			<key>Processor</key>
 			<string>MunkiInfoCreator</string>
 		</dict>
-		<dict>
+		<!-- <dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkginfo</key>
@@ -147,7 +147,7 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
-		</dict>
+		</dict> -->
 	</array>
 </dict>
 </plist>
