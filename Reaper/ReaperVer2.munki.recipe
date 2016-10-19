@@ -92,6 +92,8 @@
 				<string>%pkg_repo_path%</string>
 				<key>name</key>
 				<string>ReaMote</string>
+				<key>info_path</key>
+				<string>%MUNKI_REPO%/pkgsinfo/apps/ReaMote</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiInfoCreator</string>
