@@ -19,19 +19,19 @@
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
-    <dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
-        <key>re_pattern</key>
-        <string>files/5.x/reaper(\d+)_i386.dmg</string>
-        <key>result_output_var_name</key>
-        <string>version</string>
+				<key>re_pattern</key>
+				<string>files/5.x/reaper(\d+)_i386.dmg</string>
+				<key>result_output_var_name</key>
+				<string>version</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-    </dict>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
