@@ -93,7 +93,7 @@
 				<key>name</key>
 				<string>ReaMote</string>
 				<key>info_path</key>
-				<string>%MUNKI_REPO%/pkgsinfo/apps/ReaMote/ReaMote.plist</string>
+				<string>%MUNKI_REPO%/pkgsinfo/apps/Reaper/ReaMote.plist</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiInfoCreator</string>
