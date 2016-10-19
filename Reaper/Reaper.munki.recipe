@@ -51,7 +51,7 @@
 			<key>Processor</key>
 			<string>MunkiImporter</string>
 		</dict>
-		<dict>
+<!--		<dict>
 			<key>Comment</key>
 			<string>Second MunkiImporter for adding ReaMote to the repo</string>
 			<key>Arguments</key>
@@ -82,6 +82,9 @@
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
+		</dict> -->
+		<dict>
+			
 		</dict>
 	</array>
 </dict>
