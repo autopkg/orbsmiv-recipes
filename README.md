@@ -1,3 +1,3 @@
-Autopkg Recipes
+## Autopkg Recipes
 
-Primarily concerning audio-related applications.
+Primarily concerning **audio-related** applications.
