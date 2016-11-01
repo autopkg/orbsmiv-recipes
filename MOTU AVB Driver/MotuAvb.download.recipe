@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created by James Carpenter</string>
+	<key>Description</key>
+	<string>Downloads the latest version of the MOTU AVB driver and MOTU Audio Tools</string>
+	<key>Identifier</key>
+	<string>uk.ac.bham.beast.autopkg.download.MotuAVB</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>http://motu.com/techsupport/technotes/driverlog</string>
+		<key>NAME</key>
+		<string>MotuAvb</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>re_pattern</key>
+				<string>downloads/audio/AVB/driver/(\d{6})/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string>
+				<key>result_output_var_name</key>
+				<string>date-tag</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>http://cdn-data.motu.com/downloads/audio/AVB/driver/%date-tag%/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<!-- <dict>
+			<key>Comment</key>
+			<string>The download is verified using the Reaper signatures and it is assumed that this also verifies ReaMote.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/REAPER.app</string>
+				<key>requirement</key>
+				<string>identifier "com.cockos.reaper" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y3T58622SG</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict> -->
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/Reaper.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
