@@ -38,32 +38,33 @@
 	<string>uk.ac.bham.beast.autopkg.download.MotuProAudio</string>
 	<key>Process</key>
 	<array>
-    <dict>
-      <key>Processor</key>
-      <string>FileFinder</string>
+		<dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
 			<key>Arguments</key>
 			<dict>
-        <key>pattern</key>
-        <string>%RECIPE_CACHE_DIR%/%NAME%/*/MOTU*.*pkg</string>
-      </dict>
-    </dict>
-    <!-- <dict>
-      <key>Processor</key>
-      <string>DmgCreator</string>
-      <key>Arguments</key>
-      <dict>
-          <key>dmg_root</key>
-          <string>%RECIPE_CACHE_DIR%/%NAME%/MOTU Pro Audio Installer for Mac</string>
-          <key>dmg_path</key>
-          <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-      </dict>
-    </dict> -->
+				<key>pattern</key>
+				<!-- <string>%RECIPE_CACHE_DIR%/%NAME%/*/MOTU*.*pkg</string> -->
+				<string>%RECIPE_CACHE_DIR%/%NAME%/*/</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+			<key>Arguments</key>
+			<dict>
+					<key>dmg_root</key>
+					<string>%found_filename%</string>
+					<key>dmg_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+			</dict>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_path</key>
-        <!-- <string>%dmg_path%</string> -->
-        <string>%found_filename%</string>
+				<string>%dmg_path%</string>
+				<!-- <string>%found_filename%</string> -->
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
