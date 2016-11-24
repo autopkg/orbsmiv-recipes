@@ -11,9 +11,9 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://motu.com/techsupport/technotes/driverlog</string>
+		<string>http://motu.com/avb</string>
 		<key>NAME</key>
-		<string>MotuAvb</string>
+		<string>MotuProAudio</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
