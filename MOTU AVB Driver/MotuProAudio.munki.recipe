@@ -21,11 +21,11 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Includes MOTU Discovery (for AVB interfaces) and MOTU Audio Tools (for signal analysis).</string>
+			<string>Includes MOTU Discovery (for AVB interfaces), MOTU Audio Tools (for signal analysis) and Thunderbolt/USB drivers.</string>
 			<key>developer</key>
 			<string>MOTU</string>
 			<key>display_name</key>
-			<string>MOTU AVB</string>
+			<string>MOTU Pro Audio</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
