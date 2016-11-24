@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of the MOTU AVB driver and MOTU Audio Tools</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.download.MotuAVB</string>
+	<string>uk.ac.bham.beast.autopkg.download.MotuProAudio</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
