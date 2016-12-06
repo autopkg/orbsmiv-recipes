@@ -10,8 +10,6 @@
 	<string>uk.ac.bham.beast.autopkg.munki.Pd</string>
 	<key>Input</key>
 	<dict>
-		<key>APP_FILENAME</key>
-		<string>Pd-0.47-1-64bit</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
@@ -23,9 +21,9 @@
 				<string>testing</string>
 			</array>
 			<key>description</key>
-			<string>Edit and annotate PDFs with ease.</string>
+			<string>Pd (aka Pure Data) is a real-time graphical programming environment for audio, video, and graphical processing.</string>
 			<key>developer</key>
-			<string></string>
+			<string>Miller Puckette</string>
 			<key>display_name</key>
 			<string>Pd</string>
 			<key>name</key>
@@ -54,6 +52,26 @@
 			<string>Unarchiver</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd*.app</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>FileMover</string>
+			<key>Arguments</key>
+			<dict>
+				<key>source</key>
+				<string>%found_filename%</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>dmg_path</key>
@@ -64,18 +82,18 @@
 			<key>Processor</key>
 			<string>DmgCreator</string>
 		</dict>
-		<dict>
+		<!-- <dict>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>version</key>
-					<string>%version%</string>
+					<string>%versionString%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
-		</dict>
+		</dict> -->
 		<dict>
 			<key>Arguments</key>
 			<dict>
@@ -83,8 +101,6 @@
 				<string>%dmg_path%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
-				<key>version_comparison_key</key>
-				<string>CFBundleVersion</string>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiImporter</string>
