@@ -82,18 +82,18 @@
 			<key>Processor</key>
 			<string>DmgCreator</string>
 		</dict>
-		<!-- <dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>version</key>
-					<string>%versionString%</string>
+					<string>%versionstring%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
 			<string>MunkiPkginfoMerger</string>
-		</dict> -->
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>

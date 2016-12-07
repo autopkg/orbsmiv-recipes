@@ -27,7 +27,7 @@
 				<key>re_pattern</key>
 				<string>msp.ucsd.edu/Software/pd-(\d+\.\d+-\d+)-64bit.mac.tar.gz</string>
 				<key>result_output_var_name</key>
-				<string>versionString</string>
+				<string>versionstring</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -36,9 +36,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%-%versionString%.tgz</string>
+				<string>%NAME%-%versionstring%.tgz</string>
 				<key>url</key>
-				<string>http://msp.ucsd.edu/Software/pd-%versionString%-64bit.mac.tar.gz</string>
+				<string>http://msp.ucsd.edu/Software/pd-%versionstring%-64bit.mac.tar.gz</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
