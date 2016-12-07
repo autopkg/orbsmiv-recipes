@@ -83,12 +83,27 @@
 			<string>DmgCreator</string>
 		</dict>
 		<dict>
+    	<key>Comment</key>
+    	<string>The version string from the Pd download contains a "-" character that we want to replace with a "."</string>
+			<key>Arguments</key>
+			<dict>
+        <key>find</key>
+        <string>-</string>
+        <key>input_string</key>
+        <string>%versionstring%</string>
+        <key>replace</key>
+        <string>.</string>
+      </dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>additional_pkginfo</key>
 				<dict>
 					<key>version</key>
-					<string>%versionstring%</string>
+					<string>%output_string%</string>
 				</dict>
 			</dict>
 			<key>Processor</key>
