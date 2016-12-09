@@ -10,10 +10,6 @@
 	<string>uk.ac.bham.beast.autopkg.pkg.Pd</string>
 	<key>Input</key>
 	<dict>
-		<key>APP_FILENAME</key>
-		<string>Pd</string>
-		<key>BUNDLE_ID</key>
-		<string>org.puredata</string>
 		<key>NAME</key>
 		<string>Pd</string>
 	</dict>
