@@ -25,7 +25,7 @@
 			<key>developer</key>
 			<string>Miller Puckette</string>
 			<key>display_name</key>
-			<string>Pd</string>
+			<string>Pure Data</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
