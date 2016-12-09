@@ -5,13 +5,13 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.0.3 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Pd and creates a package.</string>
+	<string>Downloads the latest version of Pd and creates a package. This is necessary whist Pd doesn't correctly update its CFBundleVersion string.</string>
 	<key>Identifier</key>
 	<string>uk.ac.bham.beast.autopkg.pkg.Pd</string>
 	<key>Input</key>
 	<dict>
 		<key>APP_FILENAME</key>
-		<string>Pd-0.47-1-64bit</string>
+		<string>Pd</string>
 		<key>BUNDLE_ID</key>
 		<string>org.puredata</string>
 		<key>NAME</key>
