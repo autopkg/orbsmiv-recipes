@@ -37,47 +37,57 @@
 			<string>Unarchiver</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
 			<key>Arguments</key>
 			<dict>
-				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleVersion</string>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd*.app</string>
 			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
 		</dict>
 		<dict>
+    	<key>Comment</key>
+    	<string>Rename the app to Pd, removing version information.</string>
+			<key>Processor</key>
+			<string>FileMover</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pkg_request</key>
-				<dict>
-					<key>chown</key>
-					<array>
-						<dict>
-							<key>group</key>
-							<string>admin</string>
-							<key>path</key>
-							<string>Applications</string>
-							<key>user</key>
-							<string>root</string>
-						</dict>
-					</array>
-					<key>id</key>
-					<string>%BUNDLE_ID%</string>
-					<key>options</key>
-					<string>purge_ds_store</string>
-					<key>pkgname</key>
-					<string>%NAME%-%version%</string>
-					<key>pkgroot</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-					<key>version</key>
-					<string>%version%</string>
-				</dict>
+				<key>source</key>
+				<string>%found_filename%</string>
+				<key>target</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
 			</dict>
-			<key>Processor</key>
-			<string>PkgCreator</string>
 		</dict>
+		<dict>
+    	<key>Comment</key>
+    	<string>The version string from the Pd download contains a "-" character that we want to replace with a "."</string>
+			<key>Arguments</key>
+			<dict>
+        <key>find</key>
+        <string>-</string>
+        <key>input_string</key>
+        <string>%versionstring%</string>
+        <key>replace</key>
+        <string>.</string>
+      </dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+		</dict>
+    <dict>
+			<key>Arguments</key>
+			<dict>
+        <key>pkg_path</key>
+        <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+        <key>app_path</key>
+        <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
+        <key>version</key>
+        <string>%output_string%</string>
+        <key>force_pkg_build</key>
+        <true/>
+      </dict>
+			<key>Processor</key>
+			<string>AppPkgCreator</string>
+    </dict>
 	</array>
 </dict>
 </plist>
