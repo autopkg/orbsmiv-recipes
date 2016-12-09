@@ -83,7 +83,7 @@
         <key>version</key>
         <string>%output_string%</string>
         <key>force_pkg_build</key>
-        <true/>
+        <false/>
       </dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
