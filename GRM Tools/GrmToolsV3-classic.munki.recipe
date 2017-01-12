@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of the GRM Tools set specified in the input section</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.munki.GrmToolsV3</string>
+	<string>uk.ac.bham.beast.autopkg.munki.GrmToolsV3-classic</string>
 	<key>Input</key>
 	<dict>
 		<key>TOOLSET</key>
@@ -75,7 +75,7 @@
 						</dict>
 						<dict>
 							<key>attributeSetting</key>
-							<integer>1</integer>
+							<integer>0</integer>
 							<key>choiceAttribute</key>
 							<string>selected</string>
 							<key>choiceIdentifier</key>
@@ -83,7 +83,7 @@
 						</dict>
 						<dict>
 							<key>attributeSetting</key>
-							<integer>1</integer>
+							<integer>0</integer>
 							<key>choiceAttribute</key>
 							<string>selected</string>
 							<key>choiceIdentifier</key>
@@ -91,7 +91,7 @@
 						</dict>
 						<dict>
 							<key>attributeSetting</key>
-							<integer>1</integer>
+							<integer>0</integer>
 							<key>choiceAttribute</key>
 							<string>selected</string>
 							<key>choiceIdentifier</key>
@@ -99,13 +99,48 @@
 						</dict>
 						<dict>
 							<key>attributeSetting</key>
-							<integer>1</integer>
+							<integer>0</integer>
 							<key>choiceAttribute</key>
 							<string>selected</string>
 							<key>choiceIdentifier</key>
 							<string>installer_choice_7</string>
 						</dict>
 					</array>
+          <key>installs</key>
+        	<array>
+        		<dict>
+        			<key>CFBundleVersion</key>
+        			<string>%version%</string>
+        			<key>path</key>
+        			<string>/Library/Audio/Plug-Ins/VST/GRM/GRM BandPass Stereo.vst</string>
+        			<key>type</key>
+        			<string>bundle</string>
+        			<key>version_comparison_key</key>
+        			<string>CFBundleVersion</string>
+        		</dict>
+            <dict>
+        			<key>CFBundleVersion</key>
+        			<string>%version%</string>
+        			<key>path</key>
+        			<string>/Library/Audio/Plug-Ins/Components/GRM BandPass.component</string>
+        			<key>type</key>
+        			<string>bundle</string>
+        			<key>version_comparison_key</key>
+        			<string>CFBundleVersion</string>
+        		</dict>
+            <dict>
+        			<key>CFBundleIdentifier</key>
+        			<string>com.grm.BandPassApp</string>
+        			<key>CFBundleVersion</key>
+        			<string>%version%</string>
+        			<key>path</key>
+        			<string>/Applications/GRM/GRM BandPass.app</string>
+        			<key>type</key>
+        			<string>application</string>
+        			<key>version_comparison_key</key>
+        			<string>CFBundleVersion</string>
+        		</dict>
+        	</array>
 				</dict>
 			</dict>
 			<key>Processor</key>
