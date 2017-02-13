@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://http://www.sws-extension.org</string>
+		<string>http://www.sws-extension.org</string>
 		<key>NAME</key>
 		<string>Reaper-SWS</string>
 	</dict>
