@@ -38,7 +38,76 @@
 	<string>uk.ac.bham.beast.autopkg.download.ReaperSWS</string>
 	<key>Process</key>
 	<array>
-		insert stuff here
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/root/Library/Application Support/REAPER/UserPlugins</string>
+				<key>source_path</key>
+				<string>%pathname%/</string>
+				<key>overwrite</key>
+				<true/>
+			</dict>
+			<key>Comment</key>
+			<string>Copy files from DMG to obtain a hash of the file.</string>
+			<key>Processor</key>
+			<string>Copier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/unpack/root</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Library/Application Support/REAPER/UserPlugins/reaper_sws_extension.dylib</string>
+				</array>
+			</dict>
+			<key>Comment</key>
+			<string>Use processor to obtain hash.</string>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Comment</key>
+			<string>Merge installs dict.</string>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>additional_pkginfo</key>
+				<dict>
+					<key>items_to_copy</key>
+						<array>
+							<dict>
+								<key>source_item</key>
+								<string>reaper_sws_extension.dylib</string>
+								<key>destination_path</key>
+								<string>/Library/Application Support/REAPER/UserPlugins</string>
+								<key>version</key>
+								<string>%version%</string>
+								<key>installer_type</key>
+								<string>copy_from_dmg</string>
+							</dict>
+						</array>
+				</dict>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
 	</array>
 </dict>
 </plist>
