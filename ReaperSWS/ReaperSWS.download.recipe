@@ -13,7 +13,7 @@
 		<key>DOWNLOAD_URL</key>
 		<string>http://www.sws-extension.org</string>
 		<key>NAME</key>
-		<string>Reaper-SWS</string>
+		<string>ReaperSWS</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
