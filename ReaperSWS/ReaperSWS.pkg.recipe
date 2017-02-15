@@ -83,6 +83,17 @@
 				</dict>
 			</dict>
 		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Comment</key>
+			<string>Clean-up working directory.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<string>%pkgroot%</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
