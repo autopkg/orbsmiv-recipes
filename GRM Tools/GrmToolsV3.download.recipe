@@ -69,7 +69,7 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%_%TOOLSET%/*.pkg</string>
 				<key>expected_authority_names</key>
 				<array>
-						<string>Developer ID Installer: Institut National de l'Audiovisuel</string>
+						<string>Developer ID Installer: Institut National de l'Audiovisuel (26966R6C8M)</string>
 						<string>Developer ID Certification Authority</string>
 						<string>Apple Root CA</string>
 				</array>
