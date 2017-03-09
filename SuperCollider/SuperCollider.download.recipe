@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created by James Carpenter</string>
+	<key>Description</key>
+	<string>Downloads the latest version of SuperCollider</string>
+	<key>Identifier</key>
+	<string>uk.ac.bham.beast.autopkg.download.SuperCollider</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SuperCollider</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>github_repo</key>
+				<string>supercollider/supercollider</string>
+				<key>asset_regex</key>
+				<string>SuperCollider-\d\.\d\.\d-(OSX|macOS)\.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>GitHubReleasesInfoProvider</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
+			<key>Arguments</key>
+			<dict>
+				<key>index</key>
+				<integer>1</integer>
+				<key>split_on</key>
+				<string>-</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%version%.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+			<key>Arguments</key>
+				<dict>
+						<key>archive_path</key>
+						<string>%pathname%</string>
+						<key>purge_destination</key>
+						<true/>
+						<key>destination_path</key>
+						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
