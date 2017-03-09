@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Pd and creates a package. This is necessary whist Pd doesn't correctly update its CFBundleVersion string.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.pkg.Pd</string>
+	<string>com.github.orbsmiv.pkg.Pd</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -16,7 +16,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.download.Pd</string>
+	<string>com.github.orbsmiv.download.Pd</string>
 	<key>Process</key>
 	<array>
 		<dict>

@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest versions of Reaper and ReaMote and imports them into Munki.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.munki.Reaper</string>
+	<string>com.github.orbsmiv.munki.Reaper</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -35,7 +35,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.download.Reaper</string>
+	<string>com.github.orbsmiv.download.Reaper</string>
 	<key>Process</key>
 	<array>
 		<dict>

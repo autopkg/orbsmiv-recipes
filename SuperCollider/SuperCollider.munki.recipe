@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads and imports the latest version of SuperCollider into Munki</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.munki.SuperCollider</string>
+	<string>com.github.orbsmiv.munki.SuperCollider</string>
 	<key>Input</key>
 	<dict>
 		<key>MUNKI_REPO_SUBDIR</key>
@@ -33,7 +33,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.pkg.SuperCollider</string>
+	<string>com.github.orbsmiv.pkg.SuperCollider</string>
 	<key>Process</key>
 	<array>
 		<dict>

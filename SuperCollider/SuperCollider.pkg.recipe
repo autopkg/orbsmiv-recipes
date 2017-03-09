@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Creates a package for SuperCollider.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.pkg.SuperCollider</string>
+	<string>com.github.orbsmiv.pkg.SuperCollider</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>
@@ -16,7 +16,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.download.SuperCollider</string>
+	<string>com.github.orbsmiv.download.SuperCollider</string>
 	<key>Process</key>
 	<array>
 		<dict>

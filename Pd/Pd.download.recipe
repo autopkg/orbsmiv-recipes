@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Pd.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.download.Pd</string>
+	<string>com.github.orbsmiv.download.Pd</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>

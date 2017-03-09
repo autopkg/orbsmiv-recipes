@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of TwistedWave.</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.download.TwistedWave</string>
+	<string>com.github.orbsmiv.download.TwistedWave</string>
 	<key>Input</key>
 	<dict>
 		<key>NAME</key>

@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of Reaper64 (including ReaMote64).</string>
 	<key>Identifier</key>
-	<string>uk.ac.bham.beast.autopkg.download.Reaper64</string>
+	<string>com.github.orbsmiv.download.Reaper64</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
