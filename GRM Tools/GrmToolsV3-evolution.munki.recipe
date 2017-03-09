@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>uk.ac.bham.beast.autopkg.download.GrmToolsV3</string>
+	<string>uk.ac.bham.beast.autopkg.download.GrmToolsV3-evolution</string>
 	<key>Process</key>
 	<array>
 		<dict>
