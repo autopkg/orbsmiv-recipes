@@ -12,6 +12,8 @@
 	<dict>
 		<key>NAME</key>
 		<string>ReaperSWS</string>
+		<key>BUNDLE_ID</key>
+		<string>org.sws-extension.reaper</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -64,7 +66,7 @@
 					<key>pkgdir</key>
 					<string>%RECIPE_CACHE_DIR%</string>
 					<key>id</key>
-					<string>uk.ac.bham.beast.pkg.%NAME%</string>
+					<string>%BUNDLE_ID%</string>
 					<key>version</key>
 					<string>%version%</string>
 					<key>options</key>
