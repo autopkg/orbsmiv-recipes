@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of the GRM Tools set specified in the input section</string>
 	<key>Identifier</key>
-	<string>com.github.orbsmiv.munki.GrmToolsV3-evolution</string>
+	<string>com.github.orbsmiv.munki.GrmToolsEvolution</string>
 	<key>Input</key>
 	<dict>
 		<key>TOOLSET</key>
@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.orbsmiv.download.GrmToolsV3-evolution</string>
+	<string>com.github.orbsmiv.download.GrmToolsEvolution</string>
 	<key>Process</key>
 	<array>
 		<dict>

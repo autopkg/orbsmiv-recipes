@@ -7,7 +7,7 @@
 	<key>Description</key>
 	<string>Downloads the latest version of the GRM Tools set specified in the input section</string>
 	<key>Identifier</key>
-	<string>com.github.orbsmiv.download.GrmToolsV3-evolution</string>
+	<string>com.github.orbsmiv.download.GrmToolsEvolution</string>
 	<key>Input</key>
 	<dict>
 		<key>TOOLSET</key>
