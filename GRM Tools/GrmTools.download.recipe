@@ -38,7 +38,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%_%TOOLSET%.zip</string>
+				<string>%NAME%_%TOOLSET%-%version%.zip</string>
 				<key>url</key>
 				<string>http://www.inagrm.com/sites/default/files/download/GRM_Tools_%TOOLSET%_Mac.mpkg.zip</string>
 			</dict>
