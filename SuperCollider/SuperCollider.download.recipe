@@ -30,22 +30,6 @@
 		</dict>
 		<dict>
 			<key>Processor</key>
-			<string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>index</key>
-				<integer>1</integer>
-				<key>split_on</key>
-				<string>-</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%-%version%.zip</string>
-			</dict>
-			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
 		<dict>
@@ -63,6 +47,15 @@
 						<true/>
 						<key>destination_path</key>
 						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				</dict>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+			<key>Arguments</key>
+				<dict>
+						<key>input_plist_path</key>
+						<string>%RECIPE_CACHE_DIR%/%NAME%/SuperCollider/SuperCollider.app/Contents/Info.plist</string>
 				</dict>
 		</dict>
 	</array>
