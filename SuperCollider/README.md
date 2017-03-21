@@ -1,3 +1,3 @@
 #### Dependencies
 
-- Requires repo autopkg/homebysix-recipes
+- ~~Requires repo autopkg/homebysix-recipes~~
