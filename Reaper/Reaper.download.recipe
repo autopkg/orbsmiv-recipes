@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.reaper.fm/download.php</string>
+		<string>https://www.reaper.fm/download.php</string>
 		<key>NAME</key>
 		<string>Reaper</string>
 	</dict>
