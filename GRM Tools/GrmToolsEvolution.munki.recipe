@@ -37,7 +37,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.orbsmiv.download.GrmToolsEvolution</string>
+	<string>com.github.orbsmiv.download.GrmTools</string>
 	<key>Process</key>
 	<array>
 		<dict>
