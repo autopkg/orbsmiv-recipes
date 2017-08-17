@@ -54,36 +54,31 @@
 				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
 			</dict>
 		</dict>
-		<dict>
-    	<key>Comment</key>
-    	<string>The version string from the Pd download contains a "-" character that we want to replace with a "."</string>
-			<key>Arguments</key>
-			<dict>
-        <key>find</key>
-        <string>-</string>
-        <key>input_string</key>
-        <string>%versionstring%</string>
-        <key>replace</key>
-        <string>.</string>
-      </dict>
-			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
-		</dict>
     <dict>
 			<key>Arguments</key>
 			<dict>
-        <key>pkg_path</key>
-        <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
         <key>app_path</key>
         <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
-        <key>version</key>
-        <string>%output_string%</string>
         <key>force_pkg_build</key>
         <false/>
       </dict>
 			<key>Processor</key>
 			<string>AppPkgCreator</string>
     </dict>
+		<dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+			<key>Comment</key>
+			<string>Clean-up working directory.</string>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+					<string>%RECIPE_CACHE_DIR%/payload</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
