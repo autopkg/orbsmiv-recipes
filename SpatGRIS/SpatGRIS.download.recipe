@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created by James Carpenter</string>
+	<key>Description</key>
+	<string>Downloads the latest version of the SpatGRIS installer from SourceForge</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.download.SpatGRIS</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>SpatGRIS</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>SOURCEFORGE_FILE_PATTERN</key>
+				<string>SpatGRIS[\d.]*\.Mac.zip</string>
+				<key>SOURCEFORGE_PROJECT_NAME</key>
+				<string>spatgris</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.GrandPerspective/SourceForgeURLProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
