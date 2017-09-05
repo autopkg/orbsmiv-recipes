@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Comment</key>
+		<string>Written by James Carpenter</string>
+		<key>Description</key>
+		<string>Downloads the latest versions of MOTU AVB driver and MOTU Audio Tools and imports them into Munki.</string>
+		<key>Identifier</key>
+		<string>com.github.orbsmiv.munki.MotuProAudio</string>
+		<key>Input</key>
+		<dict>
+			<key>MUNKI_REPO_SUBDIR</key>
+			<string>apps/%NAME%</string>
+			<key>NAME</key>
+			<string>MotuProAudio</string>
+			<key>pkginfo</key>
+			<dict>
+				<key>catalogs</key>
+				<array>
+					<string>testing</string>
+				</array>
+				<key>description</key>
+				<string>Includes MOTU Discovery (for AVB interfaces), MOTU Audio Tools (for signal analysis) and Thunderbolt/USB drivers.</string>
+				<key>developer</key>
+				<string>MOTU</string>
+				<key>display_name</key>
+				<string>MOTU Pro Audio</string>
+				<key>name</key>
+				<string>%NAME%</string>
+				<key>unattended_install</key>
+				<true/>
+				<key>postinstall_script</key>
+				<string>#! /bin/sh
+
+cat &lt;&lt; EOF &gt; /Library/LaunchAgents/com.motu.MOTUDiscoveryApp.plist
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+  &lt;dict&gt;
+    &lt;key&gt;KeepAlive&lt;/key&gt;
+    &lt;true /&gt;
+    &lt;key&gt;Label&lt;/key&gt;
+    &lt;string&gt;com.motu.MOTUDiscoveryApp&lt;/string&gt;
+    &lt;key&gt;LimitLoadToSessionType&lt;/key&gt;
+    &lt;array&gt;
+      &lt;string&gt;Aqua&lt;/string&gt;
+    &lt;/array&gt;
+    &lt;key&gt;ProgramArguments&lt;/key&gt;
+    &lt;array&gt;
+      &lt;string&gt;/Applications/MOTU Discovery.app/Contents/MacOS/MOTU Discovery&lt;/string&gt;
+    &lt;/array&gt;
+    &lt;key&gt;RunAtLoad&lt;/key&gt;
+    &lt;true /&gt;
+  &lt;/dict&gt;
+&lt;/plist&gt;
+
+EOF
+
+exit 0</string>
+			</dict>
+		</dict>
+		<key>MinimumVersion</key>
+		<string>0.6.1</string>
+		<key>ParentRecipe</key>
+		<string>com.github.orbsmiv.pkg.MotuProAudio</string>
+		<key>Process</key>
+		<array>
+			<dict>
+				<key>Arguments</key>
+				<dict>
+					<key>additional_pkginfo</key>
+					<dict>
+						<key>version</key>
+						<string>%version%</string>
+						<key>installs</key>
+						<array>
+							<dict>
+								<key>CFBundleIdentifier</key>
+								<string>com.motu.MOTUDiscovery</string>
+								<key>CFBundleShortVersionString</key>
+								<string>%version%</string>
+								<key>path</key>
+								<string>/Applications/MOTU Discovery.app</string>
+								<key>type</key>
+								<string>application</string>
+								<key>version_comparison_key</key>
+								<string>CFBundleShortVersionString</string>
+							</dict>
+						</array>
+					</dict>
+				</dict>
+				<key>Processor</key>
+				<string>MunkiPkginfoMerger</string>
+			</dict>
+			<dict>
+				<key>Arguments</key>
+				<dict>
+					<key>pkg_path</key>
+					<string>%RECIPE_CACHE_DIR%/%NAME%.pkg</string>
+					<key>repo_subdirectory</key>
+					<string>%MUNKI_REPO_SUBDIR%</string>
+				</dict>
+				<key>Processor</key>
+				<string>MunkiImporter</string>
+			</dict>
+		</array>
+	</dict>
+</plist>
