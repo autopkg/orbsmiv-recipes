@@ -19,7 +19,7 @@
 		<string>com.github.orbsmiv.download.MotuProAudio</string>
 		<key>Process</key>
 		<array>
-			<dict>
+			<!-- <dict>
 				<key>Processor</key>
 				<string>FileFinder</string>
 				<key>Arguments</key>
@@ -27,7 +27,7 @@
 					<key>pattern</key>
 					<string>%RECIPE_CACHE_DIR%/%NAME%/MOTU Pro Audio Installer for Mac/*.pkg</string>
 				</dict>
-			</dict>
+			</dict> -->
 			<dict>
 				<key>Processor</key>
 				<string>FlatPkgUnpacker</string>
