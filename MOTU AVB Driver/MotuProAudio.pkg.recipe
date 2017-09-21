@@ -36,7 +36,7 @@
 					<key>purge_destination</key>
 					<true/>
 					<key>flat_pkg_path</key>
-					<string>%found_filename%</string>
+					<string>%pathname%</string>
 					<key>destination_path</key>
 					<string>%RECIPE_CACHE_DIR%/unpack</string>
 				</dict>
@@ -148,7 +148,7 @@ fi
 					<array>
 						<string>%RECIPE_CACHE_DIR%/unpack</string>
 						<string>%RECIPE_CACHE_DIR%/payload</string>
-						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+						<!-- <string>%RECIPE_CACHE_DIR%/%NAME%</string> -->
 					</array>
 				</dict>
 			</dict>
