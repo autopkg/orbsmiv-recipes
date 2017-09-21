@@ -11,7 +11,7 @@
 		<key>Input</key>
 		<dict>
 			<key>DOWNLOAD_URL</key>
-			<string>https://motu.com/avb</string>
+			<string>https://motu.com/proaudio/index.html</string>
 			<key>NAME</key>
 			<string>MotuProAudio</string>
 		</dict>
@@ -25,9 +25,11 @@
 					<key>url</key>
 					<string>%DOWNLOAD_URL%</string>
 					<key>re_pattern</key>
-					<string>downloads/audio/AVB/driver/(\d{6})/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string>
+					<string>http://cdn-data.motu.com/downloads/audio/AVB/driver/\d{6}/MOTU%20Pro%20Audio%20Installer%202.0%20\(\d+\).pkg</string>
+					<!-- <key>re_pattern</key>
+					<string>downloads/audio/AVB/driver/(\d{6})/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string> -->
 					<key>result_output_var_name</key>
-					<string>datetag</string>
+					<string>match</string>
 				</dict>
 				<key>Processor</key>
 				<string>URLTextSearcher</string>
@@ -36,9 +38,9 @@
 				<key>Arguments</key>
 				<dict>
 					<key>filename</key>
-					<string>%NAME%.zip</string>
+					<string>%NAME%.pkg</string>
 					<key>url</key>
-					<string>http://cdn-data.motu.com/downloads/audio/AVB/driver/%datetag%/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string>
+					<string>%match%</string>
 				</dict>
 				<key>Processor</key>
 				<string>URLDownloader</string>
@@ -47,7 +49,7 @@
 				<key>Processor</key>
 				<string>EndOfCheckPhase</string>
 			</dict>
-			<dict>
+			<!-- <dict>
 				<key>Processor</key>
 				<string>Unarchiver</string>
 				<key>Arguments</key>
@@ -59,15 +61,15 @@
 					<key>destination_path</key>
 					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				</dict>
-			</dict>
+			</dict> -->
 			<dict>
 				<key>Arguments</key>
 				<dict>
 					<key>input_path</key>
-					<string>%RECIPE_CACHE_DIR%/%NAME%/*/MOTU*.*pkg</string>
+					<string>%pathname%</string>
 					<key>expected_authority_names</key>
 					<array>
-						<string>Developer ID Installer: MOTU</string>
+						<string>Developer ID Installer: MOTU (KRCLLMGZ2D)</string>
 						<string>Developer ID Certification Authority</string>
 						<string>Apple Root CA</string>
 					</array>
