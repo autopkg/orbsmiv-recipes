@@ -368,7 +368,7 @@ class IrcamFindAndDownload(Processor):
             }
         }
 
-    def get_url_and_search(self, url, re_pattern, headers=None, flags=None, cookiePath):
+    def get_url_and_search(self, url, re_pattern, cookiePath, headers=None, flags=None):
         '''Get data from url and search for re_pattern'''
         # pylint: disable=no-self-use
         flag_accumulator = 0
@@ -438,7 +438,7 @@ class IrcamFindAndDownload(Processor):
         self.getIrcamAuthCookie(cookiePath, headers)
 
         groupmatch, groupdict = self.get_url_and_search(
-            self.env['url'], self.env['re_pattern'], headers, flags, cookiePath)
+            self.env['url'], self.env['re_pattern'], cookiePath, headers, flags)
 
         # favor a named group over a normal group match
         if output_var_name not in groupdict.keys():
