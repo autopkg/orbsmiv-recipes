@@ -436,6 +436,7 @@ class IrcamFindAndDownload(Processor):
         re_pattern = re.compile("Incorrect\susername")
         match = re_pattern.search(content)
         if match:
+            os.remove(cookiePath)
             raise ProcessorError('Incorrect Ircam Forum authorisation credentials.')
         else:
             self.output('Ircam Forum authorisation successful.')
