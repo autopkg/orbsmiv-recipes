@@ -432,8 +432,7 @@ class IrcamFindAndDownload(Processor):
 
         flags = self.env.get('re_flags', {})
 
-        temporary_cookie_file = tempfile.NamedTemporaryFile(dir=download_dir,
-                                                            delete=False)
+        temporary_cookie_file = tempfile.NamedTemporaryFile(delete=False)
         cookiePath = temporary_cookie_file.name
 
         self.getIrcamAuthCookie(cookiePath, headers)
