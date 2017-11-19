@@ -409,10 +409,7 @@ class IrcamFindAndDownload(Processor):
     def getIrcamAuthCookie(self, cookiePath, headers):
         authURL = 'https://forumnet.ircam.fr:3443//login'
 
-        username = self.env['ircam_username']
-        password = self.env['ircam_password']
-
-        dataString = "username={}&password={}&rememberme=forever".format(username, password)
+        dataString = "username={}&password={}&rememberme=forever".format(self.env['ircam_username'], self.env['ircam_password'])
 
         try:
             cmd = [self.env['CURL_PATH'], '--location', '-b', cookiePath, '-c', cookiePath, '-d', dataString]
