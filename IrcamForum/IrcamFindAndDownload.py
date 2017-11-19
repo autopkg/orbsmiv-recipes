@@ -423,7 +423,7 @@ class IrcamFindAndDownload(Processor):
                 raise ProcessorError(
                     'Could not retrieve URL %s: %s' % (authURL, stderr))
         except OSError:
-            raise ProcessorError('Could not retrieve URL: %s' % authURL)
+            raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
     def main(self):
         output_var_name = self.env['result_output_var_name']
