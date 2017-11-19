@@ -299,6 +299,12 @@ class IrcamFindAndDownload(Processor):
 
             raise ProcessorError( "Curl failure: %s (exit code %s)" % (curlerr, retcode) )
 
+        # If the file is less than 1 KB then assume that the user is not entitled to download the content.
+        if int(header.get("content-length")) < 1000:
+            size_header = header.get("content-length")
+            os.remove(pathname_temporary)
+            raise ProcessorError('Content-length of {} bytes suggests download not authorised - perhaps the subscription has expired.'.format(size_header))
+
         # If Content-Length header is present and we had a cached
         # file, see if it matches the size of the cached file.
         # Useful for webservers that don't provide Last-Modified
