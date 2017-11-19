@@ -426,6 +426,14 @@ class IrcamFindAndDownload(Processor):
         except OSError:
             raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
+        # Check returned content doesn't indicate auth failure
+        re_pattern = re.compile("Incorrect\susername")
+        match = re_pattern.search(content)
+        if match:
+            raise ProcessorError('Incorrect Ircam Forum authorisation credentials.')
+        else:
+            self.output('Ircam Forum authorisation successful.')
+
     def main(self):
         output_var_name = self.env['result_output_var_name']
 
