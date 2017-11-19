@@ -10,10 +10,12 @@
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>http://forumnet.ircam.fr/shop/en/forumnet/10-audiosculpt.html</string>
+		<key>USERNAME</key>
+		<string></string>
+		<key>PASSWORD</key>
+		<string></string>
 		<key>NAME</key>
 		<string>AudioSculpt</string>
-    <key>AUTH_COOKIE</key>
-		<string>enter_cookies_here</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -26,30 +28,15 @@
 				<string>http://forumnet.ircam.fr/shop/en/get-file.php\?id=\d+</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
-				<key>request_headers</key>
-				<dict>
-					<key>Cookie</key>
-					<string>%AUTH_COOKIE%</string>
-				</dict>
+				<key>ircam_username</key>
+				<string>%USERNAME%</string>
+				<key>ircam_password</key>
+				<string>%PASSWORD%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%.dmg</string>
-				<key>url</key>
-				<string>%match%</string>
-				<key>request_headers</key>
-				<dict>
-					<key>Cookie</key>
-					<string>%AUTH_COOKIE%</string>
-				</dict>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
