@@ -86,32 +86,37 @@ class IrcamAuth(Processor):
         if self.env['ircam_username'] != 'None':
             dataString = "username={}&password={}&rememberme=forever".format(self.env['ircam_username'], self.env['ircam_password'])
 
-        temporary_cookie_file = tempfile.NamedTemporaryFile(delete=False)
-        cookiePath = temporary_cookie_file.name
+        temporary_cookie_jar = tempfile.NamedTemporaryFile(delete=False)
+        cookieJarPath = temporary_cookie_jar.name
 
         if 'cookie_input_string' in self.env:
-            with open(cookiePath, 'w') as file:
+            cookie_input = self.env.get('cookie_input_string')
+            self.output('COOKIE INPUT STRING IS: {}'.format(cookie_input))
+            with open(cookieJarPath, 'w') as file:
                 file.write(cookie_input)
 
         try:
-            cmd = [self.env['CURL_PATH'], '--location', '--silent', '-c', '-', '-d', dataString, '--output', '/dev/null']
-            self.output(cmd)
+            cmd = [self.env['CURL_PATH'], '--location', '--silent', '-b', cookieJarPath, '-c', cookieJarPath, '--output', '/dev/null', '-D', '-']
             if headers:
                 for header, value in headers.items():
                     cmd.extend(['--header', '%s: %s' % (header, value)])
-            if 'cookie_input_string' in self.env:
-                cmd.extend(['--cookie', cookiePath])
+            if self.env['ircam_username'] != 'None':
+                cmd.extend(['-d', dataString])
             cmd.append(authURL)
+            self.output(cmd)
             proc = subprocess.Popen(
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (content, stderr) = proc.communicate()
+            self.output('Polling value: {}'.format(proc.poll()))
             if proc.returncode:
                 raise ProcessorError(
                     'Could not retrieve URL %s: %s' % (authURL, stderr))
         except OSError:
             raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
+        self.output('CONTENT BEGINS------------------------------')
         self.output(content)
+        self.output('CONTENT ENDS------------------------------')
 
         # Check returned content doesn't indicate auth failure
         re_pattern = re.compile("Incorrect\susername")
@@ -128,11 +133,14 @@ class IrcamAuth(Processor):
         # else:
         #     raise ProcessorError('No cookies found in headers.')
 
+        with open(cookieJarPath, 'r') as cookieJarFile:
+            cookieContent = cookieJarFile.read()
+
         self.output_variables = {}
         # self.env[cookie_var_name] = cookieString
-        self.env[cookie_var_name] = content
+        self.env[cookie_var_name] = cookieContent
         # self.output('Found cookie: {}'.format(cookieString))
-        self.output('Found cookie.')
+        # self.output('Found cookie.')
         self.output_variables[cookie_var_name] = {'description': 'Variable name containing found cookies.'}
 
 
