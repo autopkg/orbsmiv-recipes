@@ -83,7 +83,8 @@ class IrcamAuth(Processor):
 
         authURL = self.env['url']
 
-        dataString = "username={}&password={}&rememberme=forever".format(self.env['ircam_username'], self.env['ircam_password'])
+        if self.env['ircam_username'] != 'None':
+            dataString = "username={}&password={}&rememberme=forever".format(self.env['ircam_username'], self.env['ircam_password'])
 
         temporary_cookie_file = tempfile.NamedTemporaryFile(delete=False)
         cookiePath = temporary_cookie_file.name
