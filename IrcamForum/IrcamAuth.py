@@ -126,8 +126,10 @@ class IrcamAuth(Processor):
         else:
             self.output('Ircam Forum authorisation successful.')
 
+        # Iterates through each line that matches the 'Set-Cookie' key and keeps the most recent.
         cookieMatch = None
-        cookieMatch = re.finditer(r'Set-Cookie:\s(.*)', content)
+        for cookieMatch in re.finditer(r'Set-Cookie:\s(.*)', content):
+            pass
 
         if cookieMatch:
             cookieString = cookieMatch.group(1).strip()
