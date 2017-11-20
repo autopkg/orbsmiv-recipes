@@ -326,7 +326,6 @@ class IrcamFindAndDownload(Processor):
                 self.output("Using existing %s" % pathname)
 
                 # Discard the temp file
-                os.remove(cookiePath)
                 os.remove(pathname_temporary)
 
                 return
@@ -338,7 +337,6 @@ class IrcamFindAndDownload(Processor):
             self.output("Using existing %s" % pathname)
 
             # Discard the temp file
-            os.remove(cookiePath)
             os.remove(pathname_temporary)
 
             return
