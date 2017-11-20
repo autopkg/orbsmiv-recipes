@@ -60,9 +60,9 @@ class IrcamAuth(Processor):
             "default": "/usr/bin/curl",
             "description": "Path to curl binary. Defaults to /usr/bin/curl.",
         },
-        'cookie_output_var_name': {
+        'cookie_jar_var_name': {
             "required": False,
-            "default": "cookieString",
+            "default": "cookie_jar",
             "description": "Variable name containing the resultant cookie string. Defaults to cookieString.",
         },
         'cookie_input_string': {
@@ -71,13 +71,13 @@ class IrcamAuth(Processor):
         },
     }
     output_variables = {
-        'cookie_output_var_name': {
+        'cookie_jar_var_name': {
             "description": "Variable name containing the resultant cookie string.",
         },
     }
 
     def main(self):
-        cookie_var_name = self.env['cookie_output_var_name']
+        cookie_var_name = self.env['cookie_jar_var_name']
 
         headers = self.env.get('request_headers', {})
 
@@ -126,12 +126,13 @@ class IrcamAuth(Processor):
         else:
             self.output('Ircam Forum authorisation successful.')
 
-        # cookieMatch = re.search('Set-Cookie:\s(.*)', content)
-        #
-        # if cookieMatch:
-        #     cookieString = cookieMatch.group(1).strip()
-        # else:
-        #     raise ProcessorError('No cookies found in headers.')
+        cookieMatch = None
+        cookieMatch = re.finditer(r'Set-Cookie:\s(.*)', content)
+
+        if cookieMatch:
+            cookieString = cookieMatch.group(1).strip()
+        else:
+            raise ProcessorError('No cookies found in headers.')
 
         with open(cookieJarPath, 'r') as cookieJarFile:
             cookieContent = cookieJarFile.read()
@@ -139,7 +140,7 @@ class IrcamAuth(Processor):
         self.output_variables = {}
         # self.env[cookie_var_name] = cookieString
         self.env[cookie_var_name] = cookieContent
-        # self.output('Found cookie: {}'.format(cookieString))
+        self.output('Cookie string: {}'.format(cookieString))
         # self.output('Found cookie.')
         self.output_variables[cookie_var_name] = {'description': 'Variable name containing found cookies.'}
 
