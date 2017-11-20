@@ -175,6 +175,7 @@ class IrcamFindAndDownload(Processor):
             try:
                 os.makedirs(download_dir)
             except OSError, err:
+                os.remove(cookiePath)
                 raise ProcessorError(
                     "Can't create %s: %s" % (download_dir, err.strerror))
 
@@ -297,11 +298,13 @@ class IrcamFindAndDownload(Processor):
             except IndexError:
                 pass
 
+            os.remove(cookiePath)
             raise ProcessorError( "Curl failure: %s (exit code %s)" % (curlerr, retcode) )
 
         # If the file is less than 1 KB then assume that the user is not entitled to download the content.
         if int(header.get("content-length")) < 1000:
             size_header = header.get("content-length")
+            os.remove(cookiePath)
             os.remove(pathname_temporary)
             raise ProcessorError('Content-length of {} bytes suggests download not authorised - perhaps the subscription has expired.'.format(size_header))
 
@@ -323,6 +326,7 @@ class IrcamFindAndDownload(Processor):
                 self.output("Using existing %s" % pathname)
 
                 # Discard the temp file
+                os.remove(cookiePath)
                 os.remove(pathname_temporary)
 
                 return
@@ -334,6 +338,7 @@ class IrcamFindAndDownload(Processor):
             self.output("Using existing %s" % pathname)
 
             # Discard the temp file
+            os.remove(cookiePath)
             os.remove(pathname_temporary)
 
             return
@@ -347,6 +352,7 @@ class IrcamFindAndDownload(Processor):
         try:
             os.rename(pathname_temporary, pathname)
         except OSError:
+            os.remove(cookiePath)
             raise ProcessorError(
                 "Can't move %s to %s" % (pathname_temporary, pathname))
 
@@ -399,14 +405,17 @@ class IrcamFindAndDownload(Processor):
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (content, stderr) = proc.communicate()
             if proc.returncode:
+                os.remove(cookiePath)
                 raise ProcessorError(
                     'Could not retrieve URL %s: %s' % (url, stderr))
         except OSError:
+            os.remove(cookiePath)
             raise ProcessorError('Could not retrieve URL: %s' % url)
 
         match = re_pattern.search(content)
 
         if not match:
+            os.remove(cookiePath)
             raise ProcessorError('No match found on URL: %s' % url)
 
         # return the last matched group with the dict of named groups
@@ -427,9 +436,11 @@ class IrcamFindAndDownload(Processor):
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (content, stderr) = proc.communicate()
             if proc.returncode:
+                os.remove(cookiePath)
                 raise ProcessorError(
                     'Could not retrieve URL %s: %s' % (authURL, stderr))
         except OSError:
+            os.remove(cookiePath)
             raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
         # Check returned content doesn't indicate auth failure
