@@ -37,10 +37,12 @@ class IrcamAuth(Processor):
     input_variables = {
         'ircam_username': {
             'description': 'Ircam Forum username.',
+            "default": None,
             'required': True,
         },
         'ircam_password': {
             'description': 'Ircam Forum password.',
+            "default": None,
             'required': True,
         },
         "url": {
@@ -65,7 +67,6 @@ class IrcamAuth(Processor):
         },
         'cookie_input_string': {
             "required": False,
-            "default": "",
             "description": "Cookie string to input.",
         },
     }
@@ -77,7 +78,6 @@ class IrcamAuth(Processor):
 
     def main(self):
         cookie_var_name = self.env['cookie_output_var_name']
-        cookie_input = self.env['cookie_input_string']
 
         headers = self.env.get('request_headers', {})
 
