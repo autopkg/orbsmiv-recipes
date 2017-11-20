@@ -390,7 +390,7 @@ class IrcamFindAndDownload(Processor):
         re_pattern = re.compile(re_pattern, flags=flag_accumulator)
 
         try:
-            cmd = [self.env['CURL_PATH'], '--location', '-b', cookiePath]
+            cmd = [self.env['CURL_PATH'], '--location', '-b', cookiePath, '-c', cookiePath]
             if headers:
                 for header, value in headers.items():
                     cmd.extend(['--header', '%s: %s' % (header, value)])
