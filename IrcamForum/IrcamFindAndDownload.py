@@ -382,6 +382,8 @@ class IrcamFindAndDownload(Processor):
             }
         }
 
+        return
+
     def get_url_and_search(self, url, re_pattern, cookiePath, headers=None, flags=None):
         '''Get data from url and search for re_pattern'''
         # pylint: disable=no-self-use
@@ -449,6 +451,8 @@ class IrcamFindAndDownload(Processor):
             raise ProcessorError('Incorrect Ircam Forum authorisation credentials for user {}.'.format(self.env['ircam_username']))
         else:
             self.output('Ircam Forum authorisation successful.')
+
+        return
 
     def main(self):
         output_var_name = self.env['result_output_var_name']
