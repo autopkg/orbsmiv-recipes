@@ -20,6 +20,7 @@ import re
 import subprocess
 import time
 import tempfile
+import cookielib
 
 from autopkglib import Processor, ProcessorError
 try:
@@ -61,21 +62,30 @@ class IrcamAuth(Processor):
         'cookie_jar_var_name': {
             "required": False,
             "default": "cookie_jar",
-            "description": "Variable name containing the resultant cookie string. Defaults to cookieString.",
+            "description": "Variable name containing the resultant cookie jar. Defaults to cookie_jar.",
         },
-        'cookie_input_string': {
+        'cookie_string_var_name': {
+            "required": False,
+            "default": "cookie_string",
+            "description": "Variable name containing the resultant cookie string (semi-colon separated values). Defaults to cookie_string.",
+        },
+        'cookie_jar_input_string': {
             "required": False,
             "description": "Cookie string to input.",
         },
     }
     output_variables = {
         'cookie_jar_var_name': {
+            "description": "Variable name containing the resultant cookie jar.",
+        },
+        'cookie_string_var_name': {
             "description": "Variable name containing the resultant cookie string.",
         },
     }
 
     def main(self):
-        cookie_var_name = self.env['cookie_jar_var_name']
+        cookie_jar_var_name = self.env['cookie_jar_var_name']
+        cookie_string_var_name = self.env['cookie_string_var_name']
 
         headers = self.env.get('request_headers', {})
 
@@ -87,8 +97,8 @@ class IrcamAuth(Processor):
         temporary_cookie_jar = tempfile.NamedTemporaryFile(delete=False)
         cookieJarPath = temporary_cookie_jar.name
 
-        if 'cookie_input_string' in self.env:
-            cookie_input = self.env.get('cookie_input_string')
+        if 'cookie_jar_input_string' in self.env:
+            cookie_input = self.env.get('cookie_jar_input_string')
             self.output('COOKIE INPUT STRING IS: {}'.format(cookie_input))
             with open(cookieJarPath, 'w') as file:
                 file.write(cookie_input)
@@ -146,14 +156,19 @@ class IrcamAuth(Processor):
             self.output(cookie.name)
 
         self.output_variables = {}
-        # self.env[cookie_var_name] = cookieString
-        self.env[cookie_var_name] = cookieContent
+        self.env[cookie_jar_var_name] = cookieContent
+        self.env[cookie_string_var_name] = cookieString
+
         self.output('Cookie string: {}'.format(cookieString))
-        # self.output('Found cookie.')
-        self.output_variables[cookie_var_name] = {'description': 'Variable name containing found cookies.'}
+
+        self.output_variables[cookie_jar_var_name] = {'description': 'Variable name containing resultant cookie jar.'}
+        self.output_variables[cookie_string_var_name] = {'description': 'Variable name containing resultant cookie string.'}
+
         # Clear credentials from env dict.
         self.env.pop('ircam_username', None)
         self.env.pop('ircam_password', None)
+
+        os.remove(cookieJarPath)
 
 
 if __name__ == "__main__":
