@@ -473,15 +473,15 @@ class IrcamFindAndDownload(Processor):
         if output_var_name not in groupdict.keys():
             groupdict[output_var_name] = groupmatch
 
+        # Use download_found method to
+        self.download_found(self.env[key], cookiePath)
+
         self.output_variables = {}
         for key in groupdict.keys():
             self.env[key] = groupdict[key]
             self.output('Found matching text (%s): %s' % (key, self.env[key], ))
             self.output_variables[key] = {
                 'description': 'Matched regular expression group'}
-
-        # Use download_found method to
-        self.download_found(self.env[key], cookiePath)
 
         os.remove(cookiePath)
 
