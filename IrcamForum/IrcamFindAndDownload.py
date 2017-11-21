@@ -132,9 +132,6 @@ class IrcamFindAndDownload(Processor):
                 ("Boolean indicating if the download has changed since the "
                  "last time it was downloaded."),
         },
-        "url_downloader_summary_result": {
-            "description": "Description of interesting results."
-        },
         'result_output_var_name': {
             'description': (
                 'First matched sub-pattern from input found on the fetched '
@@ -142,12 +139,12 @@ class IrcamFindAndDownload(Processor):
                 'variable "result_output_var_name" or is assigned a default of '
                 '"match."')
         },
+        "ircam_downloader_summary_result": {
+            "description": "Description of interesting results."
+        },
     }
 
     def download_found(self, foundURL, cookiePath):
-        # clear any pre-exising summary result
-        if 'url_downloader_summary_result' in self.env:
-            del self.env['url_downloader_summary_result']
 
         self.env["last_modified"] = ""
         self.env["etag"] = ""
@@ -375,11 +372,12 @@ class IrcamFindAndDownload(Processor):
                         % header.get("etag"))
 
         self.output("Downloaded %s" % pathname)
-        self.env['url_downloader_summary_result'] = {
+
+        self.env['ircam_downloader_summary_result'] = {
             'summary_text': 'The following new items were downloaded:',
             'data': {
                 'download_path': pathname,
-            }
+            },
         }
 
         return
@@ -455,6 +453,10 @@ class IrcamFindAndDownload(Processor):
         return
 
     def main(self):
+        # clear any pre-exising summary result
+        if 'ircam_downloader_summary_result' in self.env:
+            del self.env['ircam_downloader_summary_result']
+
         output_var_name = self.env['result_output_var_name']
 
         headers = self.env.get('request_headers', {})
@@ -473,13 +475,12 @@ class IrcamFindAndDownload(Processor):
         if output_var_name not in groupdict.keys():
             groupdict[output_var_name] = groupmatch
 
-        # Use download_found method to
-        self.download_found(self.env[key], cookiePath)
+        # Use download_found method to get matched URL.
+        self.download_found(groupmatch, cookiePath)
 
-        self.output_variables = {}
         for key in groupdict.keys():
             self.env[key] = groupdict[key]
-            self.output('Found matching text (%s): %s' % (key, self.env[key], ))
+            # self.output('Found matching text (%s): %s' % (key, self.env[key], ))
             self.output_variables[key] = {
                 'description': 'Matched regular expression group'}
 
