@@ -37,13 +37,11 @@ class IrcamAuth(Processor):
     input_variables = {
         'ircam_username': {
             'description': 'Ircam Forum username.',
-            "default": None,
-            'required': True,
+            'required': False,
         },
         'ircam_password': {
             'description': 'Ircam Forum password.',
-            "default": None,
-            'required': True,
+            'required': False,
         },
         "url": {
             "required": True,
@@ -83,7 +81,7 @@ class IrcamAuth(Processor):
 
         authURL = self.env['url']
 
-        if self.env['ircam_username'] != 'None':
+        if 'ircam_username' in self.env:
             dataString = "username={}&password={}&rememberme=forever".format(self.env['ircam_username'], self.env['ircam_password'])
 
         temporary_cookie_jar = tempfile.NamedTemporaryFile(delete=False)
@@ -100,7 +98,7 @@ class IrcamAuth(Processor):
             if headers:
                 for header, value in headers.items():
                     cmd.extend(['--header', '%s: %s' % (header, value)])
-            if self.env['ircam_username'] != 'None':
+            if 'ircam_username' in self.env:
                 cmd.extend(['-d', dataString])
             cmd.append(authURL)
             self.output(cmd)
@@ -153,6 +151,9 @@ class IrcamAuth(Processor):
         self.output('Cookie string: {}'.format(cookieString))
         # self.output('Found cookie.')
         self.output_variables[cookie_var_name] = {'description': 'Variable name containing found cookies.'}
+        # Clear credentials from env dict.
+        self.env.pop('ircam_username', None)
+        self.env.pop('ircam_password', None)
 
 
 if __name__ == "__main__":
