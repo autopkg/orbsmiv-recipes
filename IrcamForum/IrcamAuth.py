@@ -139,6 +139,14 @@ class IrcamAuth(Processor):
         with open(cookieJarPath, 'r') as cookieJarFile:
             cookieContent = cookieJarFile.read()
 
+        jar_object = cookielib.MozillaCookieJar(cookieJarPath)
+        jar_object.load()
+
+        self.output('Jar object: {}'.format(jar_object))
+
+        for cookie in jar_object:
+            self.output(cookie.name)
+
         self.output_variables = {}
         # self.env[cookie_var_name] = cookieString
         self.env[cookie_var_name] = cookieContent
