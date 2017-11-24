@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://forumnet.ircam.fr/shop/en/forumnet/10-audiosculpt.html</string>
+		<string>https://forumnet.ircam.fr/shop/en/forumnet/10-audiosculpt.html</string>
 		<key>USERNAME</key>
 		<string>username</string>
 		<key>PASSWORD</key>
