@@ -2,7 +2,7 @@
 
 #### Custom Processor
 
-A combination of URLDownloader and URLTextSearcher, which authenticates with the Forum login page and creates a persistent Cookie Jar file that it passed between the various URL processes.
+A combination of URLDownloader and URLTextSearcher, which authenticates with the Forum login page and creates a persistent Cookie Jar file that it passed between the various URL processes. This will likely be superseded by a more streamlined processor when the new URLDownloader and URLTextSearcher processors are released with extended curl option parsing.
 
 #### Suggested Munki pre/post install scripts
 
