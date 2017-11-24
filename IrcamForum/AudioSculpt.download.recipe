@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of AudioSculpt.</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.download.AudioSculpt</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>http://forumnet.ircam.fr/shop/en/forumnet/10-audiosculpt.html</string>
+		<key>USERNAME</key>
+		<string>username</string>
+		<key>PASSWORD</key>
+		<string>password</string>
+		<key>NAME</key>
+		<string>AudioSculpt</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>http://forumnet.ircam.fr/shop/en/get-file.php\?id=\d+</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>ircam_username</key>
+				<string>%USERNAME%</string>
+				<key>ircam_password</key>
+				<string>%PASSWORD%</string>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+			</dict>
+			<key>Processor</key>
+			<string>IrcamFindAndDownload</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pattern</key>
+				<string>%pathname%/AudioSculpt*/AudioSculpt*.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/%dmg_found_filename%</string>
+				<key>requirement</key>
+				<string>identifier "fr.ircam.audiosculpt3" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3BD2P55TR2"</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/%dmg_found_filename%/Contents/Info.plist</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>

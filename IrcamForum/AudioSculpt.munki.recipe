@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of AudioSculpt.</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.munki.AudioSculpt</string>
+	<key>Input</key>
+	<dict>
+		<key>USERNAME</key>
+		<string>username</string>
+		<key>PASSWORD</key>
+		<string>password</string>
+		<key>NAME</key>
+		<string>AudioSculpt</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Provides a visual and "sculptural" approach to sound manipulation.</string>
+			<key>developer</key>
+			<string>Ircam</string>
+			<key>display_name</key>
+			<string>AudioSculpt</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>preinstall_script</key>
+			<string>#!/bin/sh
+
+audiosculptPath="/Applications/AudioSculpt"
+
+# Clear AS path before installing
+if [ -d "$audiosculptPath" ]; then
+rm -r "$audiosculptPath"
+fi
+
+exit 0
+			</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/sh
+
+basePath="/Applications/AudioSculpt"
+appName=$(ls "$basePath" | grep "AudioSculpt.*\.app")
+linkPath="/Applications/AudioSculpt.app"
+
+if [ -L "$linkPath" ]; then
+  rm "$linkPath"
+fi
+
+ln -s "$basePath/$appName" "$linkPath"
+
+exit 0
+			</string>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>ParentRecipe</key>
+	<string>com.github.orbsmiv.pkg.AudioSculpt</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>faux_root</key>
+				<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				<key>installs_item_paths</key>
+				<array>
+					<string>/Applications/AudioSculpt/AudioSculpt %version%.app</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiInstallsItemsCreator</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pkg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>path_list</key>
+				<array>
+					<string>%RECIPE_CACHE_DIR%/pkgroot</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>PathDeleter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
