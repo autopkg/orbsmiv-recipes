@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of the Sennheiser Ambeo plugin.</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.download.Ambeo</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>http://en-uk.sennheiser.com/global_downloads/5584/agreement</string>
+		<key>NAME</key>
+		<string>Ambeo-plugin</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>re_pattern</key>
+				<!-- <string>msp.ucsd.edu/Software/pd-(\d+\.\d+-\d+).mac.tar.gz</string> -->
+				<!-- <string>global-downloads/file/8529/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v1_1_2.zip</string> -->
+				<string>global-downloads/file/(?P&lt;filenum&gt;\d{4})/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v(?P&lt;version&gt;\d_\d_\d).zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%version%.tgz</string>
+				<key>url</key>
+				<string>http://en-uk.sennheiser.com/global-downloads/file/%filenum%/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v%version%.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
