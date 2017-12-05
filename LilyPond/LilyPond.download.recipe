@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of LilyPond.</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.download.LilyPond</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>http://lilypond.org/macos-x.html</string>
+		<key>NAME</key>
+		<string>LilyPond</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+				<key>re_pattern</key>
+				<string>http://download.linuxaudio.org/lilypond/binaries/darwin-x86/.*?\.bz2</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.tar.bz2</string>
+				<key>url</key>
+				<string>%match%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
