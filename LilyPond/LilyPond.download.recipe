@@ -23,7 +23,8 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>http://download.linuxaudio.org/lilypond/binaries/darwin-x86/.*?\.bz2</string>
+				<!-- <string>http://download.linuxaudio.org/lilypond/binaries/darwin-x86/.*?\.bz2</string> -->
+				<string>(http://download.linuxaudio.org/lilypond/binaries/darwin-x86/.*?(?P&lt;version&gt;\d+\.\d+\.\d+).*?\.bz2)</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
