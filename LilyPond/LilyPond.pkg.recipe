@@ -65,7 +65,7 @@
 					<key>app_path</key>
 					<string>%RECIPE_CACHE_DIR%/expanded/*.app</string>
 					<key>force_pkg_build</key>
-					<false/>
+					<true/>
 				</dict>
 				<key>Processor</key>
 				<string>AppPkgCreator</string>
