@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://en-uk.sennheiser.com/global_downloads/5584/agreement</string>
+		<string>https://en-uk.sennheiser.com/global_downloads/5584/agreement</string>
 		<key>NAME</key>
 		<string>Ambeo-plugin</string>
 	</dict>
