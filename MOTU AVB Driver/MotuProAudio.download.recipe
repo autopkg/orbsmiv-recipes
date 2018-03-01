@@ -25,7 +25,7 @@
 					<key>url</key>
 					<string>%DOWNLOAD_URL%</string>
 					<key>re_pattern</key>
-					<string>http://cdn-data.motu.com/downloads/audio/AVB/driver/\d{6}/MOTU%20Pro%20Audio%20Installer%202.0%20\(\d+\).pkg</string>
+					<string>https://cdn-data.motu.com/downloads/audio/AVB/driver/\d{6}/MOTU%20Pro%20Audio%20Installer%202.0%20\(\d+\).pkg</string>
 					<!-- <key>re_pattern</key>
 					<string>downloads/audio/AVB/driver/(\d{6})/MOTU%20Pro%20Audio%20Installer%20for%20Mac.zip</string> -->
 					<key>result_output_var_name</key>
