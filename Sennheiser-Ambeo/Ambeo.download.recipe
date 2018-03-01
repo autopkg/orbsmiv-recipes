@@ -25,7 +25,7 @@
 				<key>re_pattern</key>
 				<!-- <string>msp.ucsd.edu/Software/pd-(\d+\.\d+-\d+).mac.tar.gz</string> -->
 				<!-- <string>global-downloads/file/8529/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v1_1_2.zip</string> -->
-				<string>global-downloads/file/(?P&lt;filenum&gt;\d{4})/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v(?P&lt;version&gt;\d_\d_\d).zip</string>
+				<string>global-downloads/file/(?P&lt;filenum&gt;\d{4})/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v(?P&lt;version&gt;(?:\d_)*\d).zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
