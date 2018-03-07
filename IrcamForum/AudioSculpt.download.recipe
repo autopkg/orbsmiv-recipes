@@ -24,19 +24,22 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>cookiejar_var_name</key>
+				<string>testyCookie</string>
+			</dict>
+			<key>Processor</key>
+			<string>CurlCookieJar</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>http://forumnet.ircam.fr/shop/en/get-file.php\?id=\d+</string>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
-				<key>ircam_username</key>
-				<string>%USERNAME%</string>
-				<key>ircam_password</key>
-				<string>%PASSWORD%</string>
-				<key>filename</key>
-				<string>%NAME%.dmg</string>
 			</dict>
 			<key>Processor</key>
-			<string>IrcamFindAndDownload</string>
+			<string>URLTextSearcher</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
