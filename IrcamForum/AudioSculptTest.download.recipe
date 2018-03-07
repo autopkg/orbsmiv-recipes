@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of AudioSculpt.</string>
+	<key>Identifier</key>
+	<string>com.github.orbsmiv.download.AudioSculpt</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://forumnet.ircam.fr/shop/en/forumnet/10-audiosculpt.html</string>
+		<key>USERNAME</key>
+		<string>username</string>
+		<key>PASSWORD</key>
+		<string>password</string>
+		<key>NAME</key>
+		<string>AudioSculpt</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.1</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://forumnet.ircam.fr:3443//login</string>
+				<key>cookiejar_var_name</key>
+				<string>testyCookie</string>
+				<key>curl_opts</key>
+				<array>
+					<string>-d</string>
+					<string>username=%USERNAME%&amp;password=%PASSWORD%&amp;rememberme=forever</string>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>CurlCookieJar</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+	</array>
+</dict>
+</plist>
