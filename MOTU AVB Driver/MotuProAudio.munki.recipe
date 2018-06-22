@@ -30,32 +30,15 @@
 				<string>%NAME%</string>
 				<key>unattended_install</key>
 				<true/>
-				<key>postinstall_script</key>
+				<key>preinstall_script</key>
 				<string>#! /bin/sh
 
-cat &lt;&lt; EOF &gt; /Library/LaunchAgents/com.motu.MOTUDiscoveryApp.plist
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
-&lt;plist version="1.0"&gt;
-  &lt;dict&gt;
-    &lt;key&gt;KeepAlive&lt;/key&gt;
-    &lt;true /&gt;
-    &lt;key&gt;Label&lt;/key&gt;
-    &lt;string&gt;com.motu.MOTUDiscoveryApp&lt;/string&gt;
-    &lt;key&gt;LimitLoadToSessionType&lt;/key&gt;
-    &lt;array&gt;
-      &lt;string&gt;Aqua&lt;/string&gt;
-    &lt;/array&gt;
-    &lt;key&gt;ProgramArguments&lt;/key&gt;
-    &lt;array&gt;
-      &lt;string&gt;/Applications/MOTU Discovery.app/Contents/MacOS/MOTU Discovery&lt;/string&gt;
-    &lt;/array&gt;
-    &lt;key&gt;RunAtLoad&lt;/key&gt;
-    &lt;true /&gt;
-  &lt;/dict&gt;
-&lt;/plist&gt;
+OLD_MOTU_AGENT_PATH="/Library/LaunchAgents/com.motu.MOTUDiscoveryApp.plist"
 
-EOF
+if [ -f "${OLD_MOTU_AGENT_PATH}" ]; then
+  /bin/launchctl unload "${OLD_MOTU_AGENT_PATH}"
+  /bin/rm -f "${OLD_MOTU_AGENT_PATH}"
+fi
 
 exit 0</string>
 			</dict>
