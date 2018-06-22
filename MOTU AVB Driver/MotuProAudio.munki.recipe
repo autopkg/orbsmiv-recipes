@@ -77,11 +77,11 @@ exit 0</string>
 						<array>
 							<dict>
 								<key>CFBundleIdentifier</key>
-								<string>com.motu.MOTUDiscovery</string>
+								<string>com.motu.MOTUProAudioHTTPServer</string>
 								<key>CFBundleShortVersionString</key>
 								<string>%version%</string>
 								<key>path</key>
-								<string>/Applications/MOTU Discovery.app</string>
+								<string>/Library/Application Support/MOTU/ProAudio/MOTUProAudioHTTPServer.app</string>
 								<key>type</key>
 								<string>application</string>
 								<key>version_comparison_key</key>
