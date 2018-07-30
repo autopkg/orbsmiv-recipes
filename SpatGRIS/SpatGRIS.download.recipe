@@ -12,8 +12,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>SpatGRIS</string>
-		<key>DOWNLOAD_URL</key>
-		<string>https://sourceforge.net/projects/spatgris/files/latest/download</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -22,8 +20,17 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
+				<key>SOURCEFORGE_FILE_PATTERN</key>
+				<string>SpatGRIS[\d.]*\.Mac.zip</string>
+				<key>SOURCEFORGE_PROJECT_NAME</key>
+				<string>spatgris</string>
+			</dict>
+			<key>Processor</key>
+			<string>com.github.jessepeterson.munki.GrandPerspective/SourceForgeURLProvider</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>filename</key>
 				<string>%NAME%.zip</string>
 			</dict>
