@@ -12,6 +12,8 @@
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.reaper.fm/download.php</string>
+		<key>FILE_URL</key>
+		<string>https://www.reaper.fm/files/5.x/reaper%version%_x86_64.dmg</string>
 		<key>NAME</key>
 		<string>Reaper64</string>
 	</dict>
@@ -38,7 +40,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>http://www.reaper.fm/files/5.x/reaper%version%_x86_64.dmg</string>
+				<string>%FILE_URL%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
