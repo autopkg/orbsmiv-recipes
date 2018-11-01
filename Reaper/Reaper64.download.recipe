@@ -28,8 +28,6 @@
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
 				<string>%RE_PATTERN%</string>
-				<key>result_output_var_name</key>
-				<string>version</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
