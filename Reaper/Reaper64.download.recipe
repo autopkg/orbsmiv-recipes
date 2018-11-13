@@ -14,6 +14,8 @@
 		<string>https://www.reaper.fm/download.php</string>
 		<key>NAME</key>
 		<string>Reaper64</string>
+		<key>RE_PATTERN</key>
+		<string>(?P&lt;url&gt;files\/5\.x\/reaper(?P&lt;version&gt;\d+\.*)_x86_64\.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -25,9 +27,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>files/5.x/reaper(\d+.*)_x86_64.dmg</string>
-				<key>result_output_var_name</key>
-				<string>version</string>
+				<string>%RE_PATTERN%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -38,7 +38,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>http://www.reaper.fm/files/5.x/reaper%version%_x86_64.dmg</string>
+				<string>https://www.reaper.fm/%url%</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
