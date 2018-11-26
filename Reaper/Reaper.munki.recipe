@@ -10,6 +10,8 @@
 	<string>com.github.orbsmiv.munki.Reaper</string>
 	<key>Input</key>
 	<dict>
+    		<key>MUNKI_CATEGORY</key>
+		<string>Audio</string>
 		<key>MUNKI_REPO_SUBDIR</key>
 		<string>apps/%NAME%</string>
 		<key>NAME</key>
@@ -20,6 +22,8 @@
 			<array>
 				<string>testing</string>
 			</array>
+			<key>category</key>
+			<string>%MUNKI_CATEGORY%</string>
 			<key>description</key>
 			<string>REAPER is a complete digital audio production application, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset.</string>
 			<key>developer</key>
