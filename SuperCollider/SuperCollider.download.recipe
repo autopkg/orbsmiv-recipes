@@ -23,7 +23,7 @@
 				<key>github_repo</key>
 				<string>supercollider/supercollider</string>
 				<key>asset_regex</key>
-				<string>SuperCollider-\d\.\d\.\d-(OSX|macOS)\.zip</string>
+				<string>SuperCollider-\d+\.\d+\.\d+-(OSX|macOS)\.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
