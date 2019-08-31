@@ -15,6 +15,7 @@
 # limitations under the License.
 """See docstring for IrcamFindAndDownload class"""
 
+from __future__ import absolute_import
 import os.path
 import re
 import subprocess
@@ -171,7 +172,7 @@ class IrcamFindAndDownload(Processor):
         if not os.path.exists(download_dir):
             try:
                 os.makedirs(download_dir)
-            except OSError, err:
+            except OSError as err:
                 os.remove(cookiePath)
                 raise ProcessorError(
                     "Can't create %s: %s" % (download_dir, err.strerror))
@@ -185,7 +186,7 @@ class IrcamFindAndDownload(Processor):
         # this can cause issues if this item is eventually copied to a Munki repo
         # with the same permissions and the file is inaccessible by (for example)
         # the webserver.
-        os.chmod(pathname_temporary, 0644)
+        os.chmod(pathname_temporary, 0o644)
 
         # construct curl command.
         curl_cmd = [self.env['CURL_PATH'],
