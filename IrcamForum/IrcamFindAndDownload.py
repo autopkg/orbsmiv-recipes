@@ -16,14 +16,16 @@
 """See docstring for IrcamFindAndDownload class"""
 
 from __future__ import absolute_import
+
 import os.path
 import re
 import subprocess
-import time
-import xattr
 import tempfile
+import time
 
+import xattr
 from autopkglib import Processor, ProcessorError
+
 try:
     from autopkglib import BUNDLE_ID
 except ImportError:
