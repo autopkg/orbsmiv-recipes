@@ -445,7 +445,7 @@ class IrcamFindAndDownload(Processor):
             raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
         # Check returned content doesn't indicate auth failure
-        re_pattern = re.compile("Incorrect\susername")
+        re_pattern = re.compile(r"Incorrect\susername")
         match = re_pattern.search(content)
         if match:
             os.remove(cookiePath)
