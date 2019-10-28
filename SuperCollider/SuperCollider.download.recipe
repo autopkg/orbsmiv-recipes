@@ -23,7 +23,7 @@
 				<key>github_repo</key>
 				<string>supercollider/supercollider</string>
 				<key>asset_regex</key>
-				<string>SuperCollider-\d+\.\d+\.\d+-(OSX|macOS)\.zip</string>
+				<string>SuperCollider-\d+\.\d+\.\d+-(OSX|macOS)-signed\.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
@@ -48,6 +48,19 @@
 						<key>destination_path</key>
 						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
 				</dict>
+		</dict>
+    <dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/%NAME%.app</string>
+				<key>requirement</key>
+				<string>identifier "net.sourceforge.supercollider" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = HE5VJFE9E4</string>
+				<key>strict_verification</key>
+				<false/>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
 		</dict>
 		<dict>
 			<key>Processor</key>
