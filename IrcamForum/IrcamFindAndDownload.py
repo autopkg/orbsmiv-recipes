@@ -15,14 +15,17 @@
 # limitations under the License.
 """See docstring for IrcamFindAndDownload class"""
 
+from __future__ import absolute_import
+
 import os.path
 import re
 import subprocess
-import time
-import xattr
 import tempfile
+import time
 
+import xattr
 from autopkglib import Processor, ProcessorError
+
 try:
     from autopkglib import BUNDLE_ID
 except ImportError:
@@ -171,7 +174,7 @@ class IrcamFindAndDownload(Processor):
         if not os.path.exists(download_dir):
             try:
                 os.makedirs(download_dir)
-            except OSError, err:
+            except OSError as err:
                 os.remove(cookiePath)
                 raise ProcessorError(
                     "Can't create %s: %s" % (download_dir, err.strerror))
@@ -185,7 +188,7 @@ class IrcamFindAndDownload(Processor):
         # this can cause issues if this item is eventually copied to a Munki repo
         # with the same permissions and the file is inaccessible by (for example)
         # the webserver.
-        os.chmod(pathname_temporary, 0644)
+        os.chmod(pathname_temporary, 0o644)
 
         # construct curl command.
         curl_cmd = [self.env['CURL_PATH'],
@@ -279,7 +282,7 @@ class IrcamFindAndDownload(Processor):
             else:
                 time.sleep(0.1)
 
-            if proc.poll() != None:
+            if proc.poll() is not None:
                 # For small download files curl may exit before all headers
                 # have been parsed, don't immediately exit.
                 maxheaders -= 1
@@ -442,7 +445,7 @@ class IrcamFindAndDownload(Processor):
             raise ProcessorError('Could not retrieve URL: %s when attempting to get auth cookie' % authURL)
 
         # Check returned content doesn't indicate auth failure
-        re_pattern = re.compile("Incorrect\susername")
+        re_pattern = re.compile(r"Incorrect\susername")
         match = re_pattern.search(content)
         if match:
             os.remove(cookiePath)

@@ -31,7 +31,7 @@
 				<key>unattended_install</key>
 				<true/>
 				<key>preinstall_script</key>
-				<string>#! /bin/sh
+				<string>#!/bin/sh
 
 OLD_MOTU_AGENT_PATH="/Library/LaunchAgents/com.motu.MOTUDiscoveryApp.plist"
 
