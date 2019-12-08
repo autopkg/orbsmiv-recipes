@@ -14,8 +14,6 @@
 		<string>https://www.reaper.fm/download.php</string>
 		<key>NAME</key>
 		<string>Reaper</string>
-		<key>RE_PATTERN</key>
-		<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\.*)_i386\.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -27,7 +25,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>%RE_PATTERN%</string>
+				<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\.*)_i386\.dmg)</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
