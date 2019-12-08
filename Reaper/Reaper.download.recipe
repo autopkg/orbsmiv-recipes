@@ -15,7 +15,7 @@
 		<key>NAME</key>
 		<string>Reaper</string>
 		<key>RE_PATTERN</key>
-		<string>(?P&lt;url&gt;files\/5\.x\/reaper(?P&lt;version&gt;\d+\.*)_i386\.dmg)</string>
+		<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\.*)_i386\.dmg)</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
