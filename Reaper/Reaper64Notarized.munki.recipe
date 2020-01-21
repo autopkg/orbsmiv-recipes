@@ -39,7 +39,7 @@
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
 	<key>ParentRecipe</key>
-	<string>com.github.orbsmiv.download.Reaper64</string>
+	<string>com.github.orbsmiv.download.Reaper64Notarized</string>
 	<key>Process</key>
 	<array>
 		<dict>
