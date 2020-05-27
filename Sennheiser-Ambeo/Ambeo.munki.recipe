@@ -28,41 +28,6 @@
 			<string>%NAME%</string>
 			<key>unattended_install</key>
 			<true/>
-			<key>installer_choices_xml</key>
-			<array>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>installer_choice_1</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>0</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>installer_choice_2</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>installer_choice_3</string>
-				</dict>
-				<dict>
-					<key>attributeSetting</key>
-					<integer>1</integer>
-					<key>choiceAttribute</key>
-					<string>selected</string>
-					<key>choiceIdentifier</key>
-					<string>installer_choice_4</string>
-				</dict>
-			</array>
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
@@ -73,170 +38,26 @@
 	<array>
 		<dict>
 			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
+			<string>MunkiImporter</string>
 			<key>Arguments</key>
 			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/*.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>flat_pkg_path</key>
-				<string>%found_filename%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/unpack</string>
-			</dict>
-			<key>Processor</key>
-			<string>FlatPkgUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*AU.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/payload</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*VST.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/payload</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
-				<key>purge_destination</key>
-				<false/>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/unpack/*VST3.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pkg_payload_path</key>
-				<string>%found_filename%/payload</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
-				<key>purge_destination</key>
-				<false/>
-			</dict>
-			<key>Processor</key>
-			<string>PkgPayloadUnpacker</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/payload/Library/Audio/Plug-Ins/Components/*.component</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%found_filename%/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleShortVersionString</string>
-			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-		</dict>
-    <dict>
-			<key>Arguments</key>
-			<dict>
-        <key>installs_item_paths</key>
-        <array>
-          <string>/Library/Audio/Plug-Ins/Components/A-B Format Converter.component</string>
-          <string>/Library/Audio/Plug-Ins/VST/A-B Format Converter.vst</string>
-          <string>/Library/Audio/Plug-Ins/VST3/A-B Format Converter.vst3</string>
-        </array>
-				<key>faux_root</key>
-				<string>%RECIPE_CACHE_DIR%/payload</string>
-			</dict>
-			<key>Processor</key>
-			<string>MunkiInstallsItemsCreator</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>MunkiPkginfoMerger</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/*.pkg</string>
-			</dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-        <key>additional_makepkginfo_options</key>
-        <array>
-          <string>--pkgvers</string>
-          <string>%version%</string>
-        </array>
 				<key>pkg_path</key>
 				<string>%found_filename%</string>
 				<key>repo_subdirectory</key>
 				<string>%MUNKI_REPO_SUBDIR%</string>
 			</dict>
-			<key>Processor</key>
-			<string>MunkiImporter</string>
 		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/unpack</string>
-					<string>%RECIPE_CACHE_DIR%/payload</string>
-				</array>
-			</dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/extract</string>
+                </array>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
