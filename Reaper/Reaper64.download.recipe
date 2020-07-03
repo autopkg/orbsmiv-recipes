@@ -25,7 +25,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\.*(|.))_x86_64\.dmg)</string>
+				<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\w?)_x86_64\.dmg)</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
