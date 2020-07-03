@@ -1,0 +1,16 @@
+on:
+  pull_request:
+    branches:
+      - master
+env:
+  AUTOPKG_VERSION: 2.1
+
+name: AutokPkg Test
+jobs:
+  autopkg-test:
+    runs-on: macos-10.15
+    steps:
+    - name: Install AutoPkg
+      run: |
+        echo $(pwd)
+    - uses: actions/checkout@v2
