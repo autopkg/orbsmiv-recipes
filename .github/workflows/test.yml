@@ -14,4 +14,5 @@ jobs:
       run: |
         echo $(pwd)
         wget https://github.com/autopkg/autopkg/releases/download/v2.1/autopkg-${{ env.AUTOPKG_VERSION }}.pkg
+        /usr/sbin/installer -pkg autopkg-${{ env.AUTOPKG_VERSION }}.pkg -target /
     - uses: actions/checkout@v2
