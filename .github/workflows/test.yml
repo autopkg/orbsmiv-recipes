@@ -13,4 +13,5 @@ jobs:
     - name: Install AutoPkg
       run: |
         echo $(pwd)
+        wget https://github.com/autopkg/autopkg/releases/download/v2.1/autopkg-${{ env.AUTOPKG_VERSION }}.pkg
     - uses: actions/checkout@v2
