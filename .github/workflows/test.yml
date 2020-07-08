@@ -1,0 +1,44 @@
+on:
+  pull_request:
+    branches:
+      - master
+
+name: Test modified recipes
+jobs:
+  autopkg-test:
+    runs-on: macos-10.15
+    strategy:
+      matrix:
+        autopkg_version: [2.1, 1.4.1]
+        munki_pkg: [5.0.1.4059, 4.1.4.3949, 3.6.4.3786]
+    steps:
+    - name: Install AutoPkg
+      run: |
+        wget https://github.com/autopkg/autopkg/releases/download/v${{ matrix.autopkg_version }}/autopkg-${{ matrix.autopkg_version }}.pkg
+        sudo /usr/sbin/installer -pkg autopkg-${{ matrix.autopkg_version }}.pkg -target /
+        autopkg version
+    - name: Install and configure Munki
+      run: |
+        mkdir -p /Users/Shared/munki_repo/{catalogs,icons,manifests,pkgs,pkgsinfo}
+        shorter_version=$(echo ${{ matrix.munki_pkg }} | sed -n -E "s/^([[:digit:]]\.[[:digit:]]\.[[:digit:]])\.[[:digit:]]+$/\1/p")
+        wget https://github.com/munki/munki/releases/download/v${shorter_version}/munkitools-${{ matrix.munki_pkg }}.pkg
+        sudo /usr/sbin/installer -pkg munkitools-*.pkg -target /
+        /usr/local/munki/munkiimport --version
+        echo "::add-path::/usr/local/munki"
+        defaults write com.googlecode.munki.munkiimport repo_url file:///Users/Shared/munki_repo
+        defaults write com.googlecode.munki.munkiimport default_catalog testing
+    - name: Define AutoPkg's Munki settings
+      run: |
+        defaults write com.github.autopkg MUNKI_REPO /Users/Shared/munki_repo
+        defaults read com.github.autopkg
+    - uses: actions/checkout@v2
+    - name: Get changed files
+      id: files
+      uses: jitterbit/get-changed-files@v1
+    - name: Run AutoPkg on the added-modified recipes
+      run: |
+        for changed_file in ${{ steps.files.outputs.all }}; do
+          if [[ ${changed_file} == *.recipe ]]; then
+            autopkg run -v --ignore-parent-trust-verification-errors ${changed_file}
+          fi
+        done
