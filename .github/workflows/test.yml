@@ -24,7 +24,7 @@ jobs:
         wget https://github.com/munki/munki/releases/download/v${shorter_version}/munkitools-${{ matrix.munki_pkg }}.pkg
         sudo /usr/sbin/installer -pkg munkitools-*.pkg -target /
         /usr/local/munki/munkiimport --version
-        echo "::add-path::/usr/local/munki"
+        echo "/usr/local/munki" >> $GITHUB_PATH
         defaults write com.googlecode.munki.munkiimport repo_url file:///Users/Shared/munki_repo
         defaults write com.googlecode.munki.munkiimport default_catalog testing
     - name: Define AutoPkg's Munki settings
