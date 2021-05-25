@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://www.sws-extension.org</string>
+		<string>https://www.sws-extension.org</string>
 		<key>NAME</key>
 		<string>ReaperSWS</string>
 	</dict>
@@ -38,7 +38,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>http://www.sws-extension.org/download/featured/sws-v%version%.dmg</string>
+				<string>https://www.sws-extension.org/download/featured/sws-v%version%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
