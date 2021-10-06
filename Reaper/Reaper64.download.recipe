@@ -19,58 +19,24 @@
 	<string>0.6.1</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>%DOWNLOAD_URL%</string>
-				<key>re_pattern</key>
-				<string>(?P&lt;url&gt;files\/\d\.x\/reaper(?P&lt;version&gt;\d+\w?)_x86_64\.dmg)</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>filename</key>
-				<string>%NAME%.dmg</string>
-				<key>url</key>
-				<string>https://www.reaper.fm/%url%</string>
-			</dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Comment</key>
-			<string>The download is verified using the REAPER64 signatures and it is assumed that this also verifies ReaMote64.</string>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%pathname%/REAPER64.app</string>
-				<key>requirement</key>
-				<string>identifier "com.cockos.reaper" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y3T58622SG</string>
-				<key>strict_verification</key>
-				<false/>
-			</dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-		</dict>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_plist_path</key>
-				<string>%pathname%/REAPER64.app/Contents/Info.plist</string>
-				<key>plist_version_key</key>
-				<string>CFBundleShortVersionString</string>
-			</dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-		</dict>
+        <dict>
+            <key>Processor</key>
+            <string>DeprecationWarning</string>
+            <key>Arguments</key>
+            <dict>
+                <key>warning_message</key>
+                <string>REAPER64 has become REAPER again, please use the following recipe: https://github.com/autopkg/orbsmiv-recipes/blob/master/Reaper/Reaper.download.recipe.</string>
+            </dict>
+        </dict>
+        <dict>   
+            <key>Processor</key>   
+            <string>StopProcessingIf</string>   
+            <key>Arguments</key>   
+            <dict>   
+                <key>predicate</key>   
+                <string>TRUEPREDICATE</string>
+            </dict>
+        </dict>
 	</array>
 </dict>
 </plist>
