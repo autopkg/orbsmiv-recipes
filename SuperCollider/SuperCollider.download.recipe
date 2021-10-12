@@ -2,75 +2,51 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>Created by James Carpenter</string>
-	<key>Description</key>
-	<string>Downloads the latest version of SuperCollider</string>
-	<key>Identifier</key>
-	<string>com.github.orbsmiv.download.SuperCollider</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>SuperCollider</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>0.6.1</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>github_repo</key>
-				<string>supercollider/supercollider</string>
-				<key>asset_regex</key>
-				<string>SuperCollider-\d+\.\d+\.\d+-(OSX|macOS)-signed\.zip</string>
-			</dict>
-			<key>Processor</key>
-			<string>GitHubReleasesInfoProvider</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>EndOfCheckPhase</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-			<key>Arguments</key>
-				<dict>
-						<key>archive_path</key>
-						<string>%pathname%</string>
-						<key>purge_destination</key>
-						<true/>
-						<key>destination_path</key>
-						<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-				</dict>
-		</dict>
+    <key>Comment</key>
+    <string>Created by James Carpenter</string>
+    <key>Description</key>
+    <string>Downloads the latest version of SuperCollider</string>
+    <key>Identifier</key>
+    <string>com.github.orbsmiv.download.SuperCollider</string>
+    <key>Input</key>
     <dict>
-			<key>Arguments</key>
-			<dict>
-				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/%NAME%.app</string>
-				<key>requirement</key>
-				<string>identifier "net.sourceforge.supercollider" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = XXM2PXYK4B</string>
-				<key>strict_verification</key>
-				<false/>
-			</dict>
-			<key>Processor</key>
-			<string>CodeSignatureVerifier</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>Versioner</string>
-			<key>Arguments</key>
-				<dict>
-						<key>input_plist_path</key>
-						<string>%RECIPE_CACHE_DIR%/%NAME%/SuperCollider/SuperCollider.app/Contents/Info.plist</string>
-				</dict>
-		</dict>
-	</array>
+        <key>NAME</key>
+        <string>SuperCollider</string>
+    </dict>
+    <key>MinimumVersion</key>
+    <string>0.6.1</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Arguments</key>
+            <dict>
+                <key>github_repo</key>
+                <string>supercollider/supercollider</string>
+                <key>asset_regex</key>
+                <string>SuperCollider-.*?-macOS\.dmg</string>
+            </dict>
+            <key>Processor</key>
+            <string>GitHubReleasesInfoProvider</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>URLDownloader</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%pathname%/%NAME%.app</string>
+                <key>requirement</key>
+                <string>identifier "net.sourceforge.supercollider" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = HE5VJFE9E4</string>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>
