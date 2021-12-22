@@ -20,116 +20,32 @@
 	<key>Process</key>
 	<array>
 		<dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>http://msp\.ucsd\.edu/Software/pd-.*?\.macos\.zip</string>
+				<string>msp.ucsd.edu/Software/pd-(\d+\.\d+-\d+).mac.tar.gz</string>
+				<key>result_output_var_name</key>
+				<string>versionstring</string>
 			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
 		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>%match%</string>
-            </dict>
-        </dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%-%versionstring%.tgz</string>
+				<key>url</key>
+				<string>http://msp.ucsd.edu/Software/pd-%versionstring%.mac.tar.gz</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>
-		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-            <key>Arguments</key>
-            <dict>
-                <key>archive_path</key>
-                <string>%pathname%</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/unzip</string>
-                <key>purge_destination</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>PkgRootCreator</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pkgroot</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
-                <key>pkgdirs</key>
-                <dict/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%RECIPE_CACHE_DIR%/unzip/*.dmg</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%found_filename%/Pd*.app</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>FileFinder</string>
-            <key>Arguments</key>
-            <dict>
-                <key>pattern</key>
-                <string>%RECIPE_CACHE_DIR%/unzip/*.dmg</string>
-            </dict>
-        </dict>
-        <dict>
-    		<key>Comment</key>
-    		<string>Rename the app to Pd, removing version information.</string>
-            <key>Processor</key>
-            <string>Copier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>source_path</key>
-                <string>%found_filename%/%dmg_found_filename%</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
-                <key>overwrite</key>
-                <true/>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_path</key>
-                <string>%found_filename%/%dmg_found_filename%</string>
-                <key>requirement</key>
-                <string>identifier "org.puredata.pd.pd-gui" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "85W2432JR3"</string>
-            </dict>
-        </dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/unzip</string>
-				</array>
-			</dict>
 		</dict>
 	</array>
 </dict>
