@@ -2,82 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Comment</key>
-	<string>Created with Recipe Robot v1.0.3 (https://github.com/homebysix/recipe-robot)</string>
-	<key>Description</key>
-	<string>Downloads the latest version of Pd and creates a package. This is necessary whist Pd doesn't correctly update its CFBundleVersion string.</string>
-	<key>Identifier</key>
-	<string>com.github.orbsmiv.pkg.Pd</string>
-	<key>Input</key>
-	<dict>
-		<key>NAME</key>
-		<string>Pd</string>
-	</dict>
-	<key>MinimumVersion</key>
-	<string>1.0.0</string>
-	<key>ParentRecipe</key>
-	<string>com.github.orbsmiv.download.Pd</string>
-	<key>Process</key>
-	<array>
-		<dict>
-			<key>Arguments</key>
-			<dict>
-				<key>archive_path</key>
-				<string>%pathname%</string>
-				<key>destination_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
-				<key>purge_destination</key>
-				<true/>
-			</dict>
-			<key>Processor</key>
-			<string>Unarchiver</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>FileFinder</string>
-			<key>Arguments</key>
-			<dict>
-				<key>pattern</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd*.app</string>
-			</dict>
-		</dict>
-		<dict>
-    	<key>Comment</key>
-    	<string>Rename the app to Pd, removing version information.</string>
-			<key>Processor</key>
-			<string>FileMover</string>
-			<key>Arguments</key>
-			<dict>
-				<key>source</key>
-				<string>%found_filename%</string>
-				<key>target</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
-			</dict>
-		</dict>
+    <key>Comment</key>
+    <string>Created with Recipe Robot v1.0.3 (https://github.com/homebysix/recipe-robot)</string>
+    <key>Description</key>
+    <string>Downloads the latest version of Pd and creates a package. This is necessary whist Pd doesn't correctly update its CFBundleVersion string.</string>
+    <key>Identifier</key>
+    <string>com.github.orbsmiv.pkg.Pd</string>
+    <key>Input</key>
     <dict>
-			<key>Arguments</key>
-			<dict>
-        <key>app_path</key>
-        <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
-        <key>force_pkg_build</key>
-        <false/>
-      </dict>
-			<key>Processor</key>
-			<string>AppPkgCreator</string>
+        <key>NAME</key>
+        <string>Pd</string>
     </dict>
-		<dict>
-			<key>Processor</key>
-			<string>PathDeleter</string>
-			<key>Comment</key>
-			<string>Clean-up working directory.</string>
-			<key>Arguments</key>
-			<dict>
-				<key>path_list</key>
-				<array>
-					<string>%RECIPE_CACHE_DIR%/%NAME%</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.orbsmiv.download.Pd</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>AppPkgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>app_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/Pd.app</string>
+                <key>force_pkg_build</key>
+                <false/>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
+            <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>
