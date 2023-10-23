@@ -5,13 +5,18 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v1.0.3 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Reaper (including ReaMote).</string>
+	<string>Downloads the latest version of Reaper (including ReaMote).
+
+To download the Universal version use "universal" in the  DOWNLOAD_ARCH variable
+To download the legacy (10.5 - 10.14) Intel version use "x86_64" in the  DOWNLOAD_ARCH variable</string>
 	<key>Identifier</key>
 	<string>com.github.orbsmiv.download.Reaper</string>
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
 		<string>https://www.reaper.fm/download.php</string>
+		<key>DOWNLOAD_ARCH</key>
+		<string>universal</string>
 		<key>NAME</key>
 		<string>Reaper</string>
 	</dict>
@@ -25,7 +30,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>files/6\.x/reaper6.*?_x86_64\.dmg</string>
+				<string>files/[A-Za-z0-9]+\.x/reaper[0-9]+_%DOWNLOAD_ARCH%\.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
