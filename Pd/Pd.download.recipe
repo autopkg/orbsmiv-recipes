@@ -27,7 +27,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>http://msp\.ucsd\.edu/Software/pd-.*?\.macos\.zip</string>
+				<string>https://msp\.ucsd\.edu/Software/pd-.*?\.macos\.zip</string>
 			</dict>
 		</dict>
         <dict>
