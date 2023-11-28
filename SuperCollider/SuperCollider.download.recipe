@@ -23,7 +23,7 @@
                 <key>github_repo</key>
                 <string>supercollider/supercollider</string>
                 <key>asset_regex</key>
-                <string>SuperCollider-.*?-macOS\.dmg</string>
+                <string>SuperCollider-([A-Za-z0-9]+(\.[A-Za-z0-9]+)+)-macOS-universal\.dmg$</string>
             </dict>
             <key>Processor</key>
             <string>GitHubReleasesInfoProvider</string>
