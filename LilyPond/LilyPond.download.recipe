@@ -9,7 +9,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://lilypond.org/macos-x.html</string>
+		<string>https://lilypond.org/download.html</string>
 		<key>NAME</key>
 		<string>LilyPond</string>
 	</dict>
@@ -24,7 +24,8 @@
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
 				<!-- <string>http://download.linuxaudio.org/lilypond/binaries/darwin-x86/.*?\.bz2</string> -->
-				<string>(http://lilypond.org/download/binaries/darwin-x86/.*?(?P&lt;version&gt;\d+\.\d+\.\d+).*?\.bz2)</string>
+				<!-- <string>(http://lilypond.org/download/binaries/darwin-x86/.*?(?P&lt;version&gt;\d+\.\d+\.\d+).*?\.bz2)</string> -->
+				<string>href="(https://gitlab.com/lilypond/lilypond/-/releases/v(?P&lt;version&gt;[\d\.]+)/downloads/lilypond-[\d\.]+-darwin-x86_64.tar.gz)"</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLTextSearcher</string>
@@ -33,7 +34,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>filename</key>
-				<string>%NAME%.tar.bz2</string>
+				<string>%NAME%-%version%.tar.gz</string>
 				<key>url</key>
 				<string>%match%</string>
 			</dict>
