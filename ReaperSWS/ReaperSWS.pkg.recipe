@@ -14,6 +14,8 @@
 		<string>ReaperSWS</string>
 		<key>BUNDLE_ID</key>
 		<string>org.sws-extension.reaper</string>
+		<key>ARCH</key>
+		<string>x86_64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -47,9 +49,9 @@
 			<key>Arguments</key>
 			<dict>
 				<key>source_path</key>
-				<string>%pathname%/reaper_sws_extension.dylib</string>
+				<string>%pathname%/reaper_sws-%ARCH%.dylib</string>
 				<key>destination_path</key>
-				<string>%pkgroot%/Library/Application Support/REAPER/UserPlugins/reaper_sws_extension.dylib</string>
+				<string>%pkgroot%/Library/Application Support/REAPER/UserPlugins/reaper_sws-%ARCH%.dylib</string>
 				<key>overwrite</key>
 				<true/>
 			</dict>
