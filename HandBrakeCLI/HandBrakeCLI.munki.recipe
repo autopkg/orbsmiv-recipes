@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest Handbrake CLI disk image and imports it into Munki.</string>
+	<string>Downloads the latest HandBrake CLI disk image and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.orbsmiv.munki.HandBrakeCLI</string>
 	<key>Input</key>
@@ -21,7 +21,7 @@
 			<key>description</key>
 			<string>HandBrakeCLI is the command-line version of the popular HandBrake tool for converting video from nearly any format to a selection of modern, widely supported codecs.</string>
 			<key>display_name</key>
-			<string>HandbrakeCLI</string>
+			<string>HandBrakeCLI</string>
 			<key>name</key>
 			<string>%NAME%</string>
 			<key>unattended_install</key>
