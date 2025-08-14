@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Description</key>
-	<string>Downloads the latest version of the Sennheiser Ambeo plugin and imports it into Munki.</string>
+	<string>Downloads the latest Handbrake CLI disk image and imports it into Munki.</string>
 	<key>Identifier</key>
 	<string>com.github.orbsmiv.munki.HandBrakeCLI</string>
 	<key>Input</key>
