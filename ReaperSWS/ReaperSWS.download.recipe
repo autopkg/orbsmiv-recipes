@@ -5,7 +5,12 @@
 	<key>Comment</key>
 	<string>Created by James Carpenter</string>
 	<key>Description</key>
-	<string>Downloads the latest version of the Reaper SWS plugins</string>
+	<string>Downloads the latest version of the Reaper SWS plugins
+	
+Valid values for ARCH include:
+- "x86_64" (default, Intel)
+- "arm64" (Apple Silicon)
+</string>
 	<key>Identifier</key>
 	<string>com.github.orbsmiv.download.ReaperSWS</string>
 	<key>Input</key>
@@ -14,6 +19,8 @@
 		<string>https://www.sws-extension.org</string>
 		<key>NAME</key>
 		<string>ReaperSWS</string>
+		<key>ARCH</key>
+		<string>x86_64</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.6.1</string>
@@ -25,7 +32,7 @@
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 				<key>re_pattern</key>
-				<string>download\/featured\/sws-(\d+(?:\.\d+)*)-Darwin-x86_64\.dmg</string>
+				<string>download\/featured\/sws-(\d+(?:\.\d+)*)-Darwin-%ARCH%\.dmg</string>
 				<key>result_output_var_name</key>
 				<string>version</string>
 			</dict>
@@ -38,7 +45,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://www.sws-extension.org/download/featured/sws-v%version%.dmg</string>
+				<string>https://www.sws-extension.org/download/featured/sws-%version%-Darwin-%ARCH%.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
