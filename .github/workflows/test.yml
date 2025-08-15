@@ -1,5 +1,11 @@
 # On manual trigger only
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Why are you running this workflow?'
+        required: false
+        default: 'Manual test run'
 
 name: Test modified recipes
 jobs:
