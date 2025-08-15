@@ -1,16 +1,15 @@
-on:
-  pull_request:
-    branches:
-      - master
+# On manual trigger only
+on: workflow_dispatch
 
 name: Test modified recipes
 jobs:
   autopkg-test:
-    runs-on: macos-10.15
+    # See here for available versions: https://github.com/actions/runner-images
+    runs-on: macos-14
     strategy:
       matrix:
-        autopkg_version: [2.3.1, 2.1]
-        munki_pkg: [5.5.1.4365]
+        autopkg_version: [2.7.6]
+        munki_pkg: [6.6.5.4711]
     steps:
     - name: Install AutoPkg
       run: |
