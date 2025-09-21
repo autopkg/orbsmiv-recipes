@@ -36,7 +36,7 @@
 				<key>filename</key>
 				<string>%NAME%-%version%.tgz</string>
 				<key>url</key>
-				<string>http://en-uk.sennheiser.com/global-downloads/file/%filenum%/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v%version%.zip</string>
+				<string>https://en-uk.sennheiser.com/global-downloads/file/%filenum%/Sennheiser_AMBEO_A-B_format_converter_Mac_OSX_v%version%.zip</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
