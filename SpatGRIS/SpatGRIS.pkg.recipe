@@ -106,8 +106,6 @@
 					<string>%BUNDLE_ID%</string>
 					<key>version</key>
 					<string>%version%</string>
-					<key>options</key>
-					<string>purge_ds_store</string>
 					<key>chown</key>
 					<array>
 						<dict>
