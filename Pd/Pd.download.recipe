@@ -11,7 +11,7 @@
 	<key>Input</key>
 	<dict>
 		<key>DOWNLOAD_URL</key>
-		<string>http://msp.ucsd.edu/software.html</string>
+		<string>https://msp.ucsd.edu/software.html</string>
 		<key>NAME</key>
 		<string>Pd</string>
 	</dict>
